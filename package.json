@@ -17,7 +17,10 @@
     "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/vercel-builder": "^0.24.0",
     "@pinia/nuxt": "^0.4.6",
+    "@vee-validate/rules": "^4.7.3",
+    "nuxt-validate": "^1.0.1",
     "postcss-loader": "^7.0.2",
-    "sass-loader": "10.1.1"
+    "sass-loader": "10.1.1",
+    "vee-validate": "^4.7.3"
   }
 }

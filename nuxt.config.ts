@@ -13,4 +13,10 @@ export default defineNuxtConfig({
          },
       ],
    ],
+   plugins: [
+      "~/plugins/vee-validate.js"
+   ],
+   build: {
+      transpile: ["vee-validate"],
+   }
 })
