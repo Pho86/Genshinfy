@@ -1,18 +1,16 @@
-export default {
-   modules: ['@nuxtjs/tailwindcss'],
-   buildModules:['@nuxtjs/fontawesome'],
-   head: {
-      link: [
+export default defineNuxtConfig({
+   modules: [
+      '@nuxtjs/tailwindcss',
+      [
+         '@pinia/nuxt',
          {
-            rel: 'stylesheet',
-            href: 'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-            integrity: "sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU",
-            crossorigin: "anonymous"
+            autoImports: [
+               // automatically imports `defineStore`
+               'defineStore', // import { defineStore } from 'pinia'
+               // automatically imports `defineStore` as `definePiniaStore`
+               ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+            ],
          },
-         {
-            rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Roboto'
-         }
-      ]
-   }
-}
+      ],
+   ],
+})
