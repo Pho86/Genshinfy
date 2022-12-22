@@ -1,8 +1,8 @@
 <template>
   <div>
 
-    <Header/>
-    
+    <Header />
+
     <!-- Introduction -->
     <section class="mb-8 py-20 text-white text-center relative">
       <div class="absolute inset-0 w-full h-full bg-contain introduction-bg main-banner"></div>
@@ -246,12 +246,12 @@
       </div>
     </div>
 
-    <Auth/>
+    <Auth />
   </div>
 </template>
 
-<script>
 
+<script lang="ts">
 
 export default {
   layout: 'default',
