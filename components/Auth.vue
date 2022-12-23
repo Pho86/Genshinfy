@@ -56,7 +56,6 @@ export default {
    data() {
       return {
          tab: "login",
-        
       }
    },
    components:{
@@ -69,12 +68,5 @@ export default {
          modalVisibility: "isOpen"
       })
    },
-   methods: {
-      
-   }
 }
-</script>
-
-<script setup>
-
 </script>
