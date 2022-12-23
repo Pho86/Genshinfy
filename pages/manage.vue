@@ -11,8 +11,9 @@
                   <i class="fa fa-compact-disc float-right text-green-400 text-2xl"></i>
                </div>
                <div class="p-6">
-                  <composition-item v-for="(song, i) in songs" :key="song.docID" :song="song" :updateSong="updateSong"
-                     :index="i" :removeSong="removeSong" />
+                  <composition-item v-if="songs.length > 0" v-for="(song, i) in songs" :key="song.docID" :song="song" :updateSong="updateSong"
+                     :index="i" :removeSong="removeSong" :updateUnsavedFlag="updateUnsavedFlag"/>
+                  <p v-else>No songs uploaded 😖</p>
                </div>
             </div>
          </div>
@@ -36,7 +37,8 @@ export default {
    },
    data() {
       return {
-         songs: []
+         songs: [],
+         unsavedFlag: false,
       }
    },
    beforeRouteEnter(to, from, next) {
@@ -72,6 +74,17 @@ export default {
       },
       addSongInfo(song) {
          this.songs.push(song)
+      },
+      updateUnsavedFlag(value) {
+         this.unsavedFlag = value;
+      }
+   },
+   beforeRouteLeave(to, from, next) {
+      if(!this.unsavedFlag) {
+         next();
+      } else {
+         const leave = confirm('You have unsaved changes. Are you sure you want to leave?');
+         next(leave);
       }
    }
 }
