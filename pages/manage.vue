@@ -11,7 +11,7 @@
                   <i class="fa fa-compact-disc float-right text-green-400 text-2xl"></i>
                </div>
                <div class="p-6">
-                  <composition-item v-for="(song, i) in songs" :key="song.docID" :song="song" :updateSong="updateSong" :index="i"/>
+                  <composition-item v-for="(song, i) in songs" :key="song.docID" :song="song" :updateSong="updateSong" :index="i" :removeSong="removeSong"/>
                </div>
             </div>
          </div>
@@ -66,6 +66,9 @@ export default {
       updateSong(i, values) {
          this.songs[i].modified_name = values.modified_name;
          this.songs[i].genre = values.genre;
+      },
+      removeSong(i) {
+         this.songs.splice(i, 1);
       }
    }
    // beforeRouteLeave(to, from, next) {
