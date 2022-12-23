@@ -17,7 +17,6 @@ import { mapWritableState } from "pinia";
 import useUserStore from "@/stores/user";
 import firebase from '@/server/firebase/firebase.ts';
 
-
 export default {
   name: "App",
   components: {

@@ -21,7 +21,7 @@
    </section>
 </template>
 
-<script lang="ts">
+<script>
 import useUserStore from '@/stores/user';
 import AppUpload from "@/components/Upload.vue";
 import CompositionItem from "@/components/CompositionItem.vue";

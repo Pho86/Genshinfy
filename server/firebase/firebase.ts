@@ -5,7 +5,7 @@ import {
 import { getFirestore, collection } from "firebase/firestore";
 import { getStorage } from 'firebase/storage'
 
-export default defineNuxtPlugin((nuxtApp) => {
+export default defineNuxtPlugin((_nuxtApp) => {
 
    const runtimeConfig = useRuntimeConfig();
 
