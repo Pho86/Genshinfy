@@ -5,7 +5,7 @@
       <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg header"></div>
       <div class="container mx-auto flex items-center">
          <!-- Play/Pause Button -->
-         <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none">
+         <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none" @click.prevent="newSong(song)">
             <i class="fas fa-play"></i>
          </button>
          <div class="z-50 text-left ml-8">
@@ -65,8 +65,9 @@
 <script>
 import firebase from '@/server/firebase/firebase.ts';
 import { doc, getDoc, addDoc, collection, where, query, getDocs, updateDoc } from '@firebase/firestore';
-import { mapState } from 'pinia';
-import useUserStore from "@/stores/user"
+import { mapState, mapActions } from 'pinia';
+import useUserStore from "@/stores/user";
+import usePlayerStore from "@/stores/player"
 export default {
    name: "Song",
    layout: "default",
@@ -111,6 +112,7 @@ export default {
       this.getComments();
    },
    methods: {
+      ...mapActions(usePlayerStore, ["newSong"]),
       async addComment(values, { resetForm }) {
          const auth = firebase().auth;
          this.comment_in_submission = true;

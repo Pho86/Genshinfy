@@ -1,6 +1,7 @@
 <template>
   <NuxtLayout>
     <NuxtPage></NuxtPage>
+    <AppPlayer/>
   </NuxtLayout>
 
 </template>
@@ -16,12 +17,13 @@ import Auth from "@/components/Auth.vue"
 import { mapWritableState } from "pinia";
 import useUserStore from "@/stores/user";
 import firebase from '@/server/firebase/firebase.ts';
-
+import AppPlayer from "@/components/Player.vue";
 export default {
   name: "App",
   components: {
     Header,
     Auth,
+    AppPlayer
   },
   computed: {
     ...mapWritableState(useUserStore, ["userLoggedIn"])

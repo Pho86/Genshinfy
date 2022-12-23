@@ -21,6 +21,7 @@
     "@vee-validate/rules": "^4.7.3",
     "dotenv": "^16.0.3",
     "firebase": "^9.15.0",
+    "howler": "^2.2.3",
     "postcss-loader": "^7.0.2",
     "sass-loader": "10.1.1",
     "vee-validate": "^4.7.3"
