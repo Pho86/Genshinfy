@@ -7,3 +7,11 @@ body {
    @apply font-sans;
    @apply pb-24;
 }
+
+.router-link-active {
+   @apply text-yellow-500
+}
+
+.no-active {
+   color: #FFFFFF;
+}

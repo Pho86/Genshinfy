@@ -2,21 +2,24 @@
   <header id="header" class="bg-gray-700">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
-      <a class="text-white font-bold uppercase text-2xl mr-4" href="#">Genshinfy</a>
+      <NuxtLink  class="text-white font-bold uppercase text-2xl mr-4 no-active" to="/" exact-active-class="no-active">Genshinfy</NuxtLink >
 
       <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
+          <li>
+            <NuxtLink class="px-2 text-white" to="/about">About</NuxtLink>
+          </li>
           <li v-if="!userStore.userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">Login / Register</a>
           </li>
           <template v-else>
             <li>
-              <a class="px-2 text-white" href="#">Manage</a>
+              <NuxtLink class="px-2 text-white" to="/manage">Manage</NuxtLink>
             </li>
             <li>
-              <a class="px-2 text-white" href="#" @click.prevent="userStore.signout">Logout</a>
+              <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
             </li>
           </template>
         </ul>
@@ -38,6 +41,12 @@ export default {
     toggleAuthModal() {
       this.modalStore.isOpen = !this.modalStore.isOpen;
     },
+    signOut() {
+      this.userStore.signout();
+      if(this.$route.name === "manage") {
+        this.$router.push("/")
+      }
+    }
   },
 }
 </script>
