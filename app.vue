@@ -32,12 +32,7 @@ export default {
       auth: {},
     }
   },
-  async beforeCreate() {
-    this.auth = await firebase().auth;
-    console.log(this.auth)
-  },
-  
-  async beforeMount() {
+  async created() {
     this.auth = await firebase().auth;
     console.log(this.auth)
     if (this.auth.currentUser) {
@@ -48,7 +43,7 @@ export default {
       this.userLoggedIn = true
       console.log('1')
     }
-  },
+  }
 }
 
 </script>
