@@ -6,5 +6,3 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component("VErrorMessage", ErrorMessage);
 
 });
-
-

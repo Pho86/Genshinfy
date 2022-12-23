@@ -34,20 +34,15 @@ export default {
   },
   async created() {
     this.auth = await firebase().auth;
-    console.log(this.auth)
     if (this.auth.currentUser) {
-      console.log(this.auth)
       this.userLoggedIn = true
     }
     else {
       this.userLoggedIn = true
-      console.log('1')
     }
   }
 }
 
-</script>
-<script setup>
 </script>
 
 <style>

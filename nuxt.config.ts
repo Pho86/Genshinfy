@@ -15,7 +15,6 @@ export default defineNuxtConfig({
    ],
    plugins: [
       "~/plugins/vee-validate.js",
-      "~/plugins/fireauth.js",
    ],
    build: {
       transpile: ["vee-validate"],

@@ -87,7 +87,6 @@ export default {
          this.alert_message = "Please wait. Updating song info."
          const db = firebase().db;
          const auth = firebase().auth;
-         console.log(values)
          try {
             const docRef = await doc(db, "songs", this.song.docID);
             const update = updateDoc(docRef, values);
@@ -109,7 +108,7 @@ export default {
          const storageRef = ref(storage, `songs/${this.song.original_name}`)
          await deleteObject(storageRef)
             .then(() => {
-               console.log('x')
+               console.log('success')
             })
             .catch((error) => {
                console.log(error)

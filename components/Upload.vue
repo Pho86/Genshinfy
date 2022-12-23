@@ -37,7 +37,8 @@
 import firebase from '@/server/firebase/firebase.ts';
 // import { ref } from 'firebase/storage'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { addDoc, doc, setDoc, collection } from '@firebase/firestore';
+import { addDoc, doc, setDoc, collection, onSnapshot, getDoc } from '@firebase/firestore';
+
 export default {
    name: "Upload",
    data() {
@@ -46,17 +47,16 @@ export default {
          uploads: [],
       }
    },
+   props: {
+      addSong: {
+         type: Function,
+      }
+   },
    methods: {
-      async test() {
-         console.log('x')
-      },
-
       async upload($event) {
          this.is_dragover = false;
          const storage = await firebase().storage
-
          const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files];
-
          files.forEach((file) => {
             if (file.type !== 'audio/mpeg') {
                return;
@@ -79,11 +79,12 @@ export default {
                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                this.uploads[uploadIndex].current_progress = progress;
             }, (error) => {
+
                this.uploads[uploadIndex].variant = 'bg-red-400';
                this.uploads[uploadIndex].icon = 'fas fa-times';
                this.uploads[uploadIndex].text_class = 'text-red-400';
-               console.log(error);
             }, async () => {
+
                const auth = await firebase().auth
                const song = {
                   uid: auth.currentUser.uid,
@@ -97,6 +98,19 @@ export default {
                const db = await firebase().db;
 
                const songRef = await addDoc(collection(db, "songs"), song)
+               console.log(songRef.id)
+               const docRef = await doc(db, "songs", songRef.id)
+               console.log(docRef)
+               const docSnap = await getDoc(docRef)
+               if (docSnap.exists()) {
+                  const song = {
+                     ...docSnap.data(),
+                     docID: docSnap.id,
+                  }
+                  console.log(song)
+                  this.addSong(song);
+               }
+
 
                this.uploads[uploadIndex].variant = 'bg-green-400';
                this.uploads[uploadIndex].icon = 'fas fa-check';
