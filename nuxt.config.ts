@@ -11,9 +11,16 @@ export default defineNuxtConfig({
                ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
             ],
          },
+
       ],
       '@pinia-plugin-persistedstate/nuxt',
    ],
+   piniaPersistedstate: {
+      cookieOptions: {
+         sameSite: 'strict',
+      },
+      storage: 'localStorage'
+   },
    plugins: [
       "~/plugins/vee-validate.js",
    ],

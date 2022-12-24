@@ -47,6 +47,7 @@ export default defineStore("player", {
             this.sound.play();
          }
       },
+
       async checkNextSong() {
          if (this.loop) {
             this.sound.play()
@@ -69,6 +70,7 @@ export default defineStore("player", {
             requestAnimationFrame(this.progress);
          }
       },
+
       updateSeek(event) {
          if (!this.sound.playing) return
 
@@ -82,6 +84,7 @@ export default defineStore("player", {
          this.sound.once("seek", this.progress);
       }
    },
+
    getters: {
       playing: (state) => {
          if (state.sound.playing) {
@@ -91,7 +94,10 @@ export default defineStore("player", {
          return false;
       }
    },
+
    persist: {
-      storage: persistedState.sessionStorage,
+      storage: persistedState.cookiesWithOptions({
+         sameSite: 'strict',
+       }),
    },
 })
