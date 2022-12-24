@@ -1,4 +1,7 @@
-uses nuxt js/vue, tailwindcss, ts, 
+this is a non-commercial project for personal use.
+
+uses nuxt js/vue, tailwindcss, ts, and firebase
+
 
 # Nuxt 3 Minimal Starter
 
