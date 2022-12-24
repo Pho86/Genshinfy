@@ -55,7 +55,6 @@ export default {
             this.loop = this.looping
             this.loop_class = "text-green-500";
          }
-         console.log(this.loop)
       }
    },
    computed: {

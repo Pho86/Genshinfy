@@ -23,7 +23,6 @@ export default defineStore("player", {
          this.sound = new Howl({
             src: [song.url],
             html5: true,
-            // loop: this.loop,
             volume: this.volume || 1.0,
             onend: this.checkNextSong
          });
@@ -42,7 +41,6 @@ export default defineStore("player", {
 
       async toggleAudio() {
          if (!this.sound.playing) return
-
          if (this.sound.playing()) {
             this.sound.pause();
          } else {
@@ -52,8 +50,9 @@ export default defineStore("player", {
       async checkNextSong() {
          if (this.loop) {
             this.sound.play()
+            return;
          }
-         if (this.next_song.length > 0) {
+         else if (this.next_song.length > 0) {
             this.newSong(this.next_song[0]);
             this.next_song.shift();
          }

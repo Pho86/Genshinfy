@@ -134,7 +134,6 @@ export default {
             uid: auth.currentUser.uid,
          }
          const db = firebase().db;
-         // try {
          const addSong = await addDoc(collection(db, "comments"), comment);
          this.song.comment_count += 1;
          const currentDoc = await doc(db, "songs", this.$route.params.song)
