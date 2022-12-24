@@ -8,10 +8,12 @@
       </div>
 
       <div class="text-gray-600 text-lg">
-         <span class="comments">
-            <i class="fa fa-comments text-gray-600"></i>
-            {{ song.comment_count }}
-         </span>
+         <NuxtLink :to="'/songs/' + song.docID + '#comments'" v-slot="{ navigate }">
+            <span class="comments" @click="navigate">
+               <i class="fa fa-comments text-gray-600"></i>
+               {{ song.comment_count }}
+            </span>
+         </NuxtLink>
       </div>
    </li>
 </template>

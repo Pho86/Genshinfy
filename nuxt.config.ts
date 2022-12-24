@@ -31,5 +31,8 @@ export default defineNuxtConfig({
          FIREBASE_messageSenderID: process.env.NUXT_MESSAGING_SENDER_ID || "default_messaging_id",
          FIREBASE_appID: process.env.NUXT_APP_ID || "default_app_id",
       }
-   }
+   },
+   app: {
+      pageTransition: { name: 'fade', mode: 'out-in' }
+   },
 })

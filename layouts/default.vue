@@ -1,19 +1,15 @@
 <template>
-    
-   <slot></slot>
+    <Header />
+    <slot></slot>
+    <Player/>
 </template>
  
 
 
 <script>
+
 export default {
-   head() {
-        return {
-            bodyAttrs: {
-                class: 'hallo'
-            }
-        }
-    },
+    
 }
 </script>
 

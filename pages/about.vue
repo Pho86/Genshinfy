@@ -1,7 +1,7 @@
 <template>
-
-   <Header />
-   <h1>hello world</h1>
+   <main>
+      <h1>hello world</h1>
+   </main>
 </template>
 
 <script lang="ts">

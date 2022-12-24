@@ -1,7 +1,8 @@
 <template>
   <NuxtLayout>
+    <transition name="fade" mode="out-in">
     <NuxtPage></NuxtPage>
-    <AppPlayer/>
+    </transition>
   </NuxtLayout>
 
 </template>
@@ -17,13 +18,13 @@ import Auth from "@/components/Auth.vue"
 import { mapWritableState } from "pinia";
 import useUserStore from "@/stores/user";
 import firebase from '@/server/firebase/firebase.ts';
-import AppPlayer from "@/components/Player.vue";
+import Player from "@/components/Player.vue";
 export default {
   name: "App",
   components: {
     Header,
     Auth,
-    AppPlayer
+    Player
   },
   computed: {
     ...mapWritableState(useUserStore, ["userLoggedIn"])
@@ -53,5 +54,16 @@ export default {
 .main-banner {
   background-image: url('~/assets/img/header.png');
   z-index: -1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  filter: blur(.2rem);
 }
 </style>
