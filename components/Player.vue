@@ -9,7 +9,7 @@
       <div class="flex flex-nowrap gap-4 items-center">
          <!-- Play/Pause Button -->
          <button type="button" @click.prevent="toggleAudio">
-            <i class="fa  text-gray-500 text-xl" :class="{ 'fa-play': !playing, 'fa-pause': playing }"></i>
+            <i class="fa text-gray-500 text-xl" :class="{ 'fa-play': !playing, 'fa-pause': playing }"></i>
          </button>
          <!-- Current Position -->
          <div class="player-currenttime">{{ seek }}</div>
@@ -25,21 +25,42 @@
          </div>
          <!-- Duration -->
          <div class="player-duration">{{ duration }}</div>
+         <button type="button" @click.prevent="toggleLoop">
+            <i class="fas fa-repeat" :class="loop_class"></i>
+         </button>
       </div>
    </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'pinia';
+import { mapActions, mapState, mapWritableState } from 'pinia';
 import usePlayerStore from "@/stores/player";
 
 export default {
    name: "Player",
+   data() {
+      return {
+         looping: false,
+         loop_class: "text-gray-500",
+      }
+   },
    methods: {
-      ...mapActions(usePlayerStore, ["toggleAudio", "updateSeek"]),
+      ...mapActions(usePlayerStore, ["toggleAudio", "updateSeek", "toggleLoop"]),
+      async toggleLoop() {
+         this.looping = !this.looping;
+         if (this.looping === false) {
+            this.loop_class = "text-grey-400";
+            this.loop = this.looping
+         } else {
+            this.loop = this.looping
+            this.loop_class = "text-green-500";
+         }
+         console.log(this.loop)
+      }
    },
    computed: {
-      ...mapState(usePlayerStore, ["playing", "duration", "seek", "playerProgress", "current_song"])
+      ...mapState(usePlayerStore, ["playing", "duration", "seek", "playerProgress", "current_song"]),
+      ...mapWritableState(usePlayerStore, ["loop"])
    }
 }
 </script>

@@ -18,7 +18,7 @@
          <VForm :validation-schema="schema" :initial-values="song" @submit="edit">
             <div class="mb-3">
                <label class="inline-block mb-2">Song Title</label>
-               <VField type="text" name="modified_name" 
+               <VField type="text" name="modified_name"
                   class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                   placeholder="Enter Song Title" @input="updateUnsavedFlag(true)" />
                <VErrorMessage class="text-red-600" name="modified_name" />
@@ -62,7 +62,7 @@ export default {
          required: true,
       },
       removeSong: {
-         type: Function, 
+         type: Function,
          required: true,
       },
       updateUnsavedFlag: {
@@ -118,9 +118,8 @@ export default {
             .catch((error) => {
                console.log(error)
             })
-         // const docRef = await doc(db, "songs", this.song.docID);
          await deleteDoc(doc(db, "songs", this.song.docID));
-         
+
          this.removeSong(this.index);
       }
    }

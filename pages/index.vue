@@ -60,7 +60,6 @@ export default {
     this.getSongs();
 
     if (process.client) {
-      // console.log(window.innerWidth, window.innerHeight);
       window.addEventListener("scroll", this.handleScroll)
     }
   },

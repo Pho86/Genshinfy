@@ -9,6 +9,10 @@
                @click.prevent="newSong(song)">
                <i class="fas fa-play"></i>
             </button>
+               <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
+                  @click.prevent="addtoQueue(song)">
+                  <i class="fas fa-plus"></i>
+               </button>
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
@@ -114,7 +118,7 @@ export default {
       this.getComments();
    },
    methods: {
-      ...mapActions(usePlayerStore, ["newSong"]),
+      ...mapActions(usePlayerStore, ["newSong", "addToQueue"]),
       async addComment(values, { resetForm }) {
          const auth = firebase().auth;
          this.comment_in_submission = true;
@@ -137,14 +141,6 @@ export default {
          const currentSong = await updateDoc(currentDoc, {
             comment_count: this.song.comment_count
          })
-
-         // } catch {
-         //    this.comment_in_submission = false;
-         //    this.comment_alert_variant = 'bg-red-500';
-         //    this.comment_alert_message = 'Comment failed.';
-         //    resetForm();
-         //    return
-         // }
          this.getComments();
 
          this.comment_in_submission = false;
@@ -166,6 +162,7 @@ export default {
             })
          })
       },
+
       watch: {
          sort(newVal) {
             if (newVal === this.$route.query.sort) {

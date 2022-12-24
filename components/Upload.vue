@@ -111,7 +111,6 @@ export default {
                   this.addSong(song);
                }
 
-
                this.uploads[uploadIndex].variant = 'bg-green-400';
                this.uploads[uploadIndex].icon = 'fas fa-check';
                this.uploads[uploadIndex].text_class = 'text-green-400';

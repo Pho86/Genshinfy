@@ -12,6 +12,7 @@ export default defineNuxtConfig({
             ],
          },
       ],
+      '@pinia-plugin-persistedstate/nuxt',
    ],
    plugins: [
       "~/plugins/vee-validate.js",

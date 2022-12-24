@@ -104,9 +104,6 @@ export default {
       }
    },
    methods: {
-      async firetest() {
-         console.log(this.userStore)
-      },
       ...mapActions(useUserStore, {
          createUser: "register",
       }),

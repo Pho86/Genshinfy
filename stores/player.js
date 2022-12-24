@@ -1,18 +1,20 @@
-import { Howl } from "howler";
+import { Howl, Howler } from "howler";
 import helper from "@/utils/helper";
-
 
 export default defineStore("player", {
    state: () => ({
       current_song: {},
+      next_song: [],
       sound: {},
       seek: "00:00",
       duration: "00:00",
       playerProgress: "0%",
+      volume: 1.0,
+      loop: false,
    }),
    actions: {
       async newSong(song) {
-         if(this.sound instanceof Howl) {
+         if (this.sound instanceof Howl) {
             this.sound.unload();
          }
 
@@ -21,13 +23,21 @@ export default defineStore("player", {
          this.sound = new Howl({
             src: [song.url],
             html5: true,
+            // loop: this.loop,
+            volume: this.volume || 1.0,
+            onend: this.checkNextSong
          });
+
          this.sound.play();
 
          this.sound.on("play", () => {
             requestAnimationFrame(this.progress);
          })
 
+      },
+      async addToQueue(song) {
+         console.log(song)
+         return;
       },
 
       async toggleAudio() {
@@ -39,18 +49,29 @@ export default defineStore("player", {
             this.sound.play();
          }
       },
+      async checkNextSong() {
+         if (this.loop) {
+            this.sound.play()
+         }
+         if (this.next_song.length > 0) {
+            this.newSong(this.next_song[0]);
+            this.next_song.shift();
+         }
+      },
 
       async progress() {
          this.seek = helper.formatTime(this.sound.seek());
          this.duration = helper.formatTime(this.sound.duration());
 
          this.playerProgress = `${(this.sound.seek() / this.sound.duration() * 100)}%`
+         if ((this.sound.seek() / this.sound.duration() * 100) > 98) {
+         }
          if (this.sound.playing()) {
             requestAnimationFrame(this.progress);
          }
       },
       updateSeek(event) {
-         if(!this.sound.playing) return
+         if (!this.sound.playing) return
 
          const { x, width } = event.currentTarget.getBoundingClientRect();
 
@@ -70,5 +91,8 @@ export default defineStore("player", {
 
          return false;
       }
-   }
+   },
+   persist: {
+      storage: persistedState.sessionStorage,
+   },
 })
