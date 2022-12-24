@@ -28,3 +28,9 @@ export default {
    }
 }
 </script>
+
+<script setup>
+
+const { vIcon } = useVIcon()
+
+</script>

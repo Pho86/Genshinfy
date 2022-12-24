@@ -44,7 +44,7 @@
 
 <script>
 import firebase from "@/server/firebase/firebase.ts";
-import { collection, setDoc, doc, updateDoc, deleteDoc } from "@firebase/firestore";
+import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { ref, deleteObject } from "@firebase/storage";
 export default {
    name: "CompositionItem",

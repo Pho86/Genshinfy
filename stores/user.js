@@ -1,7 +1,6 @@
-// import { defineStore } from "pinia";
 import firebase from '@/server/firebase/firebase.ts';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signOut } from '@firebase/auth';
-import { addDoc, doc, setDoc } from '@firebase/firestore';
+import { doc, setDoc } from '@firebase/firestore';
 
 export default defineStore("user", {
    state: () => ({
