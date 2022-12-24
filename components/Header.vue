@@ -11,6 +11,9 @@
           <li>
             <NuxtLink class="px-2 text-white" to="/about">About</NuxtLink>
           </li>
+          <li>
+            <NuxtLink class="px-2 text-white" to="/quotes">Quotes</NuxtLink>
+          </li>
           <li v-if="!userStore.userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">Login / Register</a>
           </li>

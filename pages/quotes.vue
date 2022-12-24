@@ -4,7 +4,7 @@
          <div class="absolute inset-0 w-full h-full bg-contain introduction-bg main-banner"></div>
          <div class="container mx-auto">
             <div class="text-white main-header-content">
-               <h1 class="font-bold text-5xl mb-5">About Genshinfy!</h1>
+               <h1 class="font-bold text-5xl mb-5">Get Random Genshin Quotes.</h1>
             </div>
          </div>
 
@@ -23,7 +23,7 @@
 <script>
 
 export default {
-   name: "About",
+   name: "Quotes",
    layout: 'default',
 }
 </script>
