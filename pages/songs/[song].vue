@@ -174,18 +174,18 @@ export default {
          })
       },
 
-      watch: {
-         sort(newVal) {
-            if (newVal === this.$route.query.sort) {
-               return
-            }
-            this.$router.push({
-               query: {
-                  sort: newVal,
-               }
-            })
-         }
-      }
+      // watch: {
+      //    sort(newVal) {
+      //       if (newVal === this.$route.query.sort) {
+      //          return
+      //       }
+      //       this.$router.push({
+      //          query: {
+      //             sort: newVal,
+      //          }
+      //       })
+      //    }
+      // }
    }
 }
 </script>

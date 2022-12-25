@@ -22,6 +22,9 @@
               <NuxtLink class="px-2 text-white" to="/manage">Manage</NuxtLink>
             </li>
             <li>
+              <NuxtLink class="px-2 text-white" to="/favourites">Favourites</NuxtLink>
+            </li>
+            <li>
               <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
             </li>
           </template>
