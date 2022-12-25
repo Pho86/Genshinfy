@@ -34,9 +34,12 @@ export default defineStore("player", {
          })
 
       },
-      async addToQueue(song) {
-         console.log(song)
-         return;
+      async addQueue(song) {
+         this.next_song.push(song);
+         if (Object.keys(this.current_song).length === 0) {
+            this.newSong(this.next_song[0]);
+            this.next_song = [];
+         }
       },
 
       async toggleAudio() {

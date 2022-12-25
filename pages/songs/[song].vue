@@ -11,7 +11,7 @@
             </button>
             <button type="button"
                class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
-               @click.prevent="addtoQueue(song)">
+               @click.prevent="addQueue(song)">
                <i class="fas fa-plus"></i>
             </button>
             <div class="z-50 text-left ml-8">
@@ -129,7 +129,7 @@ export default {
    created() {
    },
    methods: {
-      ...mapActions(usePlayerStore, ["newSong", "addToQueue"]),
+      ...mapActions(usePlayerStore, ["newSong", "addQueue"]),
       async addComment(values, { resetForm }) {
          const auth = this.auth;
          this.comment_in_submission = true;
