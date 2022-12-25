@@ -27,3 +27,10 @@ export default {
    layout: 'default',
 }
 </script>
+
+<style scoped>
+.main-banner {
+  background-image: url('~/assets/img/user-header.png');
+  z-index: -1;
+}
+</style>
