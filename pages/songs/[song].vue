@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import firebase from '@/server/firebase/firebase.ts';
 import { doc, getDoc, addDoc, collection, where, query, getDocs, updateDoc } from '@firebase/firestore';
 import { mapState, mapActions } from 'pinia';
 import useUserStore from "@/stores/user";

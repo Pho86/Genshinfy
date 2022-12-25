@@ -34,10 +34,8 @@
 </template>
 
 <script>
-import firebase from '@/server/firebase/firebase.ts';
-// import { ref } from 'firebase/storage'
-import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { addDoc, doc, setDoc, collection, onSnapshot, getDoc } from '@firebase/firestore';
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { addDoc, doc, collection, getDoc } from '@firebase/firestore';
 import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
 export default {
    name: "Upload",

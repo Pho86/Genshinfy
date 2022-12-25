@@ -24,8 +24,7 @@ export default defineNuxtPlugin((_nuxtApp) => {
    const db = getFirestore(app);
    const storage = getStorage(app)
    
-   const usersCollection = collection(db, 'users');
    // console.log(auth)
 
-   return { app, auth, db, usersCollection, storage }
+   return { app, auth, db, storage }
 });

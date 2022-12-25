@@ -1,7 +1,7 @@
 <template>
   <NuxtLayout>
     <transition name="fade" mode="out-in">
-    <NuxtPage></NuxtPage>
+      <NuxtPage></NuxtPage>
     </transition>
   </NuxtLayout>
 
@@ -35,6 +35,7 @@ export default {
       auth: {},
     }
   },
+
   async created() {
     this.auth = await firebase().auth;
     if (this.auth.currentUser) {
@@ -45,8 +46,8 @@ export default {
     }
   }
 }
-
 </script>
+
 
 <style>
 @import 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css';

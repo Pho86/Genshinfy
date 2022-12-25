@@ -27,7 +27,6 @@ import useUserStore from '@/stores/user';
 import AppUpload from "@/components/Upload.vue";
 import CompositionItem from "@/components/CompositionItem.vue";
 
-import firebase from '@/server/firebase/firebase.ts';
 import { where, getDocs, query, collection } from '@firebase/firestore';
 import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
 

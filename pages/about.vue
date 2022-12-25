@@ -13,7 +13,7 @@
       <section class="container mx-auto">
          <div class="bg-white rounded border border-gray-200 relative flex flex-col">
             <div class="px-6 pt-6 pb-6 border-b border-gray-200">
-               <p>Genshinfy is a music streaming site, that was created as a non-commercial personal project. If you wish for a song to be taken down please contact me.</p>
+               <p>Genshinfy is a music streaming site, that was created as a non-commercial personal project to practice using NuxtJS/Vue/Firebase. If a song needs to be taken down, please contact me.</p>
             </div>
          </div>
       </section>

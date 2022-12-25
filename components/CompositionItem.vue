@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import firebase from "@/server/firebase/firebase.ts";
 import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { ref, deleteObject } from "@firebase/storage";
 import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
@@ -115,7 +114,7 @@ export default {
          const db = this.database;
          const storage = this.storage;
          const storageRef = ref(storage, `songs/${this.song.original_name}`);
-         
+
          await deleteObject(storageRef)
             .then(() => {
                console.log('success')
