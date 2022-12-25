@@ -2,12 +2,12 @@
   <main>
     <!-- Introduction -->
     <section class="mb-8 py-20 text-white text-center relative">
-      <div class="absolute inset-0 w-full h-full bg-contain introduction-bg main-banner"></div>
+      <div class="absolute inset-0 w-full h-full bg-cover introduction-bg main-banner"></div>
       <div class="container mx-auto">
         <div class="text-white main-header-content">
           <h1 class="font-bold text-5xl mb-5">Listen to Genshinfy Music!</h1>
           <p class="w-full md:w-8/12 mx-auto">
-            Genshinfy is a platform that allows users to easily listen to music mainly from the game Genshin Impact. It
+            Genshinfy is a music streaming platform that allows users to easily listen to music mainly from the game Genshin Impact. It
             offers a wide selection of songs from the game, making it easy for fans to enjoy their favorite music.
             <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for battle,
             Genshinfy has you covered with its extensive collection of music. Whether you're a casual player or a
