@@ -60,6 +60,7 @@ export default defineStore("player", {
             this.newSong(this.next_song[0]);
             this.next_song.shift();
          }
+      
       },
 
       async progress() {
