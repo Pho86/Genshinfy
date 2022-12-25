@@ -1,5 +1,5 @@
 <template>
-  <header id="header" class="bg-gray-700">
+  <header id="header" class="bg-slate-800">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
       <NuxtLink class="text-white font-bold uppercase text-2xl mr-4 no-active" to="/" exact-active-class="no-active">

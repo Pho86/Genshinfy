@@ -9,7 +9,7 @@ body {
 }
 
 .router-link-active {
-   @apply text-yellow-500
+   @apply text-yellow-400
 }
 
 .no-active {

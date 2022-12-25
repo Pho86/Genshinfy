@@ -1,5 +1,6 @@
 <template>
   <NuxtLayout>
+    <NuxtLoadingIndicator color="#FFCF0D"/>
     <transition name="fade" mode="out-in">
       <NuxtPage></NuxtPage>
     </transition>

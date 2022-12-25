@@ -34,9 +34,11 @@ export default defineNuxtConfig({
    plugins: [
       "~/plugins/vee-validate.js",
       "~/plugins/vee-validate-rules.ts",
+      
    ],
    build: {
       transpile: ["vee-validate"],
+      analyze: true
    },
    runtimeConfig: {
       // The private keys which are only available server-side
@@ -51,4 +53,5 @@ export default defineNuxtConfig({
          FIREBASE_appID: process.env.NUXT_APP_ID || "default_app_id",
       }
    },
+   
 })
