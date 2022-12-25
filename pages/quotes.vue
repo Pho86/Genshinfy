@@ -8,13 +8,20 @@
             </div>
          </div>
 
-         <img class="relative block mx-auto mt-5 -mb-10 w-auto" src="~/assets/img/hutao-wave.gif"/>
+         <img class="relative block mx-auto mt-5 -mb-10 w-auto" src="~/assets/img/hutao-wave.gif" />
       </section>
       <section class="container mx-auto">
          <div class="bg-white rounded border border-gray-200 relative flex flex-col text-center">
 
             <div class="px-6 pt-6 pb-6 border-b border-gray-200 content-center">
-               <template v-if="error">
+               <template v-if="loading">
+                  <div>
+                     <p class="text-4xl text-slate-800">
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                     </p>
+                  </div>
+               </template>
+               <template v-else-if="error">
                   <div>
                      <p>The hourly limit of 100 generated quotes has been reached. Please try again later.</p>
                   </div>
@@ -30,6 +37,11 @@
                   <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-yellow-600 float-center mt-5"
                      @click.prevent="copyQuote">Copy Quote</button>
                </template>
+               <div v-if="copyAlert"
+                  class="text-white text-center font-bold p-4 mb-4 bg-slate-800 mt-5 w-3/12 justify-center mx-auto rounded-lg"
+                  @click.prevent="copyAlert = false">
+                  Text Copied!
+               </div>
 
             </div>
          </div>
@@ -38,14 +50,16 @@
 </template>
 
 <script>
-
+import fetchQuoteFromAnimeApi from "@/server/api/anime"
 export default {
    name: "Quotes",
    layout: 'default',
    data() {
       return {
          quote: {},
-         error: false,
+         loading: true,
+         error: true,
+         copyAlert: false,
       }
    },
    created() {
@@ -58,15 +72,19 @@ export default {
          fetch("https://animechan.vercel.app/api/random")
             .then((response) => response.json())
             .then((quote) => {
+               this.error = false;
+               this.loading = false;
                this.quote = quote;
             })
             .catch((error) => {
+               this.loading = false;
                console.log(error)
                this.error = true;
             });
       },
       copyQuote() {
-         navigator.clipboard.writeText(this.quote.quote)
+         navigator.clipboard.writeText(this.quote.quote);
+         this.copyAlert = true;
       }
    }
 }
