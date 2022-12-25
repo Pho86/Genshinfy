@@ -9,10 +9,11 @@
                @click.prevent="newSong(song)">
                <i class="fas fa-play"></i>
             </button>
-               <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
-                  @click.prevent="addtoQueue(song)">
-                  <i class="fas fa-plus"></i>
-               </button>
+            <button type="button"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
+               @click.prevent="addtoQueue(song)">
+               <i class="fas fa-plus"></i>
+            </button>
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
@@ -73,7 +74,9 @@ import firebase from '@/server/firebase/firebase.ts';
 import { doc, getDoc, addDoc, collection, where, query, getDocs, updateDoc } from '@firebase/firestore';
 import { mapState, mapActions } from 'pinia';
 import useUserStore from "@/stores/user";
-import usePlayerStore from "@/stores/player"
+import usePlayerStore from "@/stores/player";
+import { firebaseDB, firebaseAuth } from "@/composables/firebase";
+
 export default {
    name: "Song",
    layout: "default",
@@ -88,7 +91,9 @@ export default {
          comment_alert_variant: 'bg-blue-500',
          comment_alert_message: 'Please wait! Your comment is being submitted.',
          comments: [],
-         sort: "1"
+         sort: "1",
+         database: firebaseDB(),
+         auth: firebaseAuth(),
       }
    },
    computed: {
@@ -102,25 +107,32 @@ export default {
          });
       }
    },
-   async created() {
-      const db = firebase().db;
-      const song = await doc(db, "songs", this.$route.params.song);
+   async beforeRouteEnter(to, from, next) {
+      const db = await firebaseDB();
+      const song = await doc(db, "songs", to.params.song);
       const songSnapshot = await getDoc(song);
-      if (!songSnapshot.exists()) {
-         this.$router.push({ name: 'home' })
-         return;
-      }
-      const { sort } = this.$route.query;
 
-      this.sort = sort === "1" || sort === "2" ? sort : "1"
+      next((vm) => {
+         if (!songSnapshot.exists()) {
+            vm.$router.push({ name: 'home' })
+            return;
+         }
+         const { sort } = vm.$route.query;
 
-      this.song = songSnapshot.data();
-      this.getComments();
+            vm.sort = sort === "1" || sort === "2" ? sort : "1"
+
+            vm.song = songSnapshot.data();
+            vm.getComments();
+
+      })
+
+   },
+   created() {
    },
    methods: {
       ...mapActions(usePlayerStore, ["newSong", "addToQueue"]),
       async addComment(values, { resetForm }) {
-         const auth = firebase().auth;
+         const auth = this.auth;
          this.comment_in_submission = true;
          this.comment_show_alert = true;
          this.comment_alert_variant = 'bg-blue-500';
@@ -133,7 +145,7 @@ export default {
             name: auth.currentUser.displayName,
             uid: auth.currentUser.uid,
          }
-         const db = firebase().db;
+         const db = this.database;
          const addSong = await addDoc(collection(db, "comments"), comment);
          this.song.comment_count += 1;
          const currentDoc = await doc(db, "songs", this.$route.params.song)
@@ -149,7 +161,8 @@ export default {
          resetForm();
       },
       async getComments() {
-         const db = firebase().db;
+         const db = this.database;
+
          const songCollection = await query(collection(db, "comments"), where('songID', '==', this.$route.params.song));
          const songSnapshots = await getDocs(songCollection);
          this.comments = [];

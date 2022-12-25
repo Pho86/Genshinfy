@@ -29,6 +29,8 @@ import CompositionItem from "@/components/CompositionItem.vue";
 
 import firebase from '@/server/firebase/firebase.ts';
 import { where, getDocs, query, collection } from '@firebase/firestore';
+import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
+
 export default {
    name: "Manage",
    layout: 'default',
@@ -40,6 +42,9 @@ export default {
       return {
          songs: [],
          unsavedFlag: false,
+         database: firebaseDB(),
+         auth: firebaseAuth(),
+         storage: firebaseStorage()
       }
    },
    beforeRouteEnter(to, from, next) {
@@ -52,11 +57,15 @@ export default {
       // next({ name: "About" })
    },
    async created() {
-      const auth = firebase().auth;
-      const db = firebase().db;
-      const songCollection = await query(collection(db, "songs"), where("uid", "==", auth.currentUser.uid));
-      const querySnapshot = await getDocs(songCollection);
-      querySnapshot.forEach(this.addSong);
+      const auth = this.auth;
+      const db = this.database;
+      if (this.auth.currentUser) {
+         const songCollection = await query(collection(db, "songs"), where("uid", "==", auth.currentUser.uid));
+         const querySnapshot = await getDocs(songCollection);
+         querySnapshot.forEach(this.addSong);
+      } else {
+         this.$router.push('/')
+      }
    },
    methods: {
       updateSong(i, values) {

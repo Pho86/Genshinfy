@@ -38,13 +38,16 @@ import firebase from '@/server/firebase/firebase.ts';
 // import { ref } from 'firebase/storage'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { addDoc, doc, setDoc, collection, onSnapshot, getDoc } from '@firebase/firestore';
-
+import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
 export default {
    name: "Upload",
    data() {
       return {
          is_dragover: false,
          uploads: [],
+         database: firebaseDB(),
+         auth: firebaseAuth(),
+         storage: firebaseStorage(),
       }
    },
    props: {
@@ -55,7 +58,7 @@ export default {
    methods: {
       async upload($event) {
          this.is_dragover = false;
-         const storage = await firebase().storage
+         const storage = await this.storage;
          const files = $event.dataTransfer ? [...$event.dataTransfer.files] : [...$event.target.files];
          files.forEach((file) => {
             if (file.type !== 'audio/mpeg') {
@@ -85,7 +88,7 @@ export default {
                this.uploads[uploadIndex].text_class = 'text-red-400';
             }, async () => {
 
-               const auth = await firebase().auth
+               const auth = this.auth
                const song = {
                   uid: auth.currentUser.uid,
                   display_name: auth.currentUser.displayName,
@@ -95,7 +98,7 @@ export default {
                   comment_count: 0,
                };
                song.url = await getDownloadURL(uploadFile.snapshot.ref)
-               const db = await firebase().db;
+               const db = this.database;
 
                const songRef = await addDoc(collection(db, "songs"), song)
                console.log(songRef.id)

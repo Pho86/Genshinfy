@@ -19,6 +19,7 @@ import { mapWritableState } from "pinia";
 import useUserStore from "@/stores/user";
 import firebase from '@/server/firebase/firebase.ts';
 import Player from "@/components/Player.vue";
+
 export default {
   name: "App",
   components: {
@@ -27,7 +28,7 @@ export default {
     Player
   },
   computed: {
-    ...mapWritableState(useUserStore, ["userLoggedIn"])
+    ...mapWritableState(useUserStore, ["userLoggedIn"]),
   },
   data() {
     return {

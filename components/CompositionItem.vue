@@ -46,6 +46,8 @@
 import firebase from "@/server/firebase/firebase.ts";
 import { doc, updateDoc, deleteDoc } from "@firebase/firestore";
 import { ref, deleteObject } from "@firebase/storage";
+import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
+
 export default {
    name: "CompositionItem",
    props: {
@@ -79,7 +81,10 @@ export default {
          in_submission: false,
          show_alert: false,
          alert_variant: 'bg-blue-500',
-         alert_message: "Please wait. Updating song info."
+         alert_message: "Please wait. Updating song info.",
+         database: firebaseDB(),
+         auth: firebaseAuth(),
+         storage: firebaseStorage(),
       }
    },
    methods: {
@@ -88,8 +93,7 @@ export default {
          this.show_alert = true;
          this.alert_variant = 'bg-blue-500'
          this.alert_message = "Please wait. Updating song info."
-         const db = firebase().db;
-         const auth = firebase().auth;
+         const db = this.database;
          try {
             const docRef = await doc(db, "songs", this.song.docID);
             const update = updateDoc(docRef, values);
@@ -108,9 +112,10 @@ export default {
          this.alert_message = "Success!";
       },
       async deleteSong() {
-         const db = firebase().db;
-         const storage = firebase().storage;
-         const storageRef = ref(storage, `songs/${this.song.original_name}`)
+         const db = this.database;
+         const storage = this.storage;
+         const storageRef = ref(storage, `songs/${this.song.original_name}`);
+         
          await deleteObject(storageRef)
             .then(() => {
                console.log('success')
