@@ -14,10 +14,22 @@
                @click.prevent="addQueue(song)">
                <i class="fas fa-plus"></i>
             </button>
+            <button type="button" v-if="!favourited"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
+               @click.prevent="addFavourite">
+               <i class="fas fa-heart"></i>
+            </button>
+            <button type="button" v-else
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 text-blue-700"
+               @click.prevent="removeFavourite">
+               <i class="fas fa-heart"></i>
+            </button>
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
                <div>{{ song.genre }}</div>
+               <div v-if="song.favourited > 0">{{ song.favourited }} people have favourited this song.</div>
+               <div v-else>No one has favourited this song 😓</div>
             </div>
          </div>
       </section>
@@ -70,7 +82,7 @@
 </template>
 
 <script>
-import { doc, getDoc, addDoc, collection, where, query, getDocs, updateDoc } from '@firebase/firestore';
+import { doc, getDoc, addDoc, collection, where, query, getDocs, updateDoc, deleteDoc } from '@firebase/firestore';
 import { mapState, mapActions } from 'pinia';
 import useUserStore from "@/stores/user";
 import usePlayerStore from "@/stores/player";
@@ -90,6 +102,7 @@ export default {
          comment_alert_variant: 'bg-blue-500',
          comment_alert_message: 'Please wait! Your comment is being submitted.',
          comments: [],
+         favourited: false,
          sort: "1",
          database: firebaseDB(),
          auth: firebaseAuth(),
@@ -118,11 +131,11 @@ export default {
          }
          const { sort } = vm.$route.query;
 
-            vm.sort = sort === "1" || sort === "2" ? sort : "1"
+         vm.sort = sort === "1" || sort === "2" ? sort : "1"
 
-            vm.song = songSnapshot.data();
-            vm.getComments();
-
+         vm.song = songSnapshot.data();
+         vm.getComments();
+         vm.getFavourite();
       })
 
    },
@@ -158,6 +171,59 @@ export default {
          this.comment_alert_message = 'Comment added!';
 
          resetForm();
+      },
+      log() {
+         console.log(this.favourited)
+      },
+      async addFavourite() {
+         const auth = this.auth;
+
+         const db = this.database;
+         this.favourited = true;
+         const favouriteInfo = {
+            favourited: true,
+            dateFavourited: new Date().toString(),
+            songID: this.$route.params.song,
+            uid: auth.currentUser.uid
+         }
+         const addFavourite = await addDoc(collection(db, "favourites"), favouriteInfo);
+         this.song.favourited += 1;
+         const currentDoc = await doc(db, "songs", this.$route.params.song);
+         const currentSong = await updateDoc(currentDoc, {
+            favourited: this.song.favourited
+         })
+      },
+      async removeFavourite() {
+         const db = this.database;
+         const auth = this.auth;
+         this.favourited = false;
+
+         const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
+         const favSnapshots = await getDocs(favouriteCollection);
+         let favDoc;
+         favSnapshots.forEach((doc) => {
+            favDoc = doc.id
+         });
+         const deleteFavourite = await deleteDoc(doc(db, "favourites", favDoc))
+         
+         this.song.favourited -= 1;
+         const currentDoc = await doc(db, "songs", this.$route.params.song);
+         const currentSong = await updateDoc(currentDoc, {
+            favourited: this.song.favourited
+         })
+      },
+      async getFavourite() {
+
+         const db = this.database;
+         const auth = this.auth;
+         const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
+         const favSnapshots = await getDocs(favouriteCollection);
+
+         favSnapshots.forEach((doc) => {
+            if (doc) {
+               this.favourited = true;
+            }
+         });
       },
       async getComments() {
          const db = this.database;

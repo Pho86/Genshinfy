@@ -58,13 +58,11 @@ export default defineStore("player", {
             return;
          }
          else if (this.next_song.length > 0 && this.randomize) {
-            console.log(this.next_song)
             const randomNum = Math.floor(Math.random() * this.next_song.length)
             this.newSong(this.next_song[randomNum]);
             this.next_song.splice(randomNum, 1);
          }
          else if (this.next_song.length > 0) {
-            console.log(this.next_song)
             this.newSong(this.next_song[0]);
             this.next_song.shift();
          }
@@ -91,13 +89,10 @@ export default defineStore("player", {
 
       randomizePlaylist(songs) {
          this.next_song = songs.slice();
-         console.log(this.next_song)
          this.randomize = true;
          const randomNum = Math.floor(Math.random() * this.next_song.length);
          this.newSong(this.next_song[randomNum]);
          this.next_song.splice(randomNum, 1);
-         console.log(this.next_song)
-
       },
 
       updateSeek(event) {
