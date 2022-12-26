@@ -1,28 +1,28 @@
 <template>
    <div class="col-span-1">
-      <div class="bg-white rounded border border-gray-200 relative flex flex-col">
-         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-            <span class="card-title">Upload</span>
+      <div class="bg-white rounded border border-gray-200 relative flex flex-col dark:border-gray-500">
+         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 dark:bg-gray-700 dark:border-gray-500">
+            <span class="card-title dark:text-gray-50">Upload</span>
             <i class="fas fa-upload float-right text-sky-400 text-2xl"></i>
          </div>
-         <div class="p-6">
+         <div class="p-6 dark:bg-gray-700 dark:border-gray-500">
             <!-- Upload Dropbox -->
             <div
-               class="w-full px-10 py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-green-400 hover:border-green-400 hover:border-solid"
+               class="w-full px-10 py-20 rounded text-center cursor-pointer border border-dashed border-gray-400 text-gray-400 transition duration-500 hover:text-white hover:bg-sky-400 hover:border-sky-400 hover:border-solid dark:bg-gray-600"
                :class="{ 'bg-sky-400 border-sky-400 border-solid': is_dragover }" @drag.prevent.stop=""
                @dragstart.prevent.stop="" @dragend.prevent.stop="is_dragover = false"
                @dragover.prevent.stop="is_dragover = true" @dragenter.prevent.stop="is_dragover = true"
                @dragleave.prevent.stop="is_dragover = false" @drop.prevent.stop="upload($event)">
                <h5>Drop your files here</h5>
             </div>
-            <input type="file" multiple @change="upload($event)" />
-            <hr class="my-6" />
+            <input class="dark:text-gray-50" type="file" multiple @change="upload($event)" />
+            <hr class="my-6 dark:border-gray-400" />
             <!-- Progess Bars -->
             <div class="mb-4" v-for="upload in uploads" :key="upload.name">
-               <div class="font-bold text-sm" :class="upload.text_class">
+               <div class="font-bold text-sm dark:text-gray-50" :class="upload.text_class">
                   <i :class="upload.icon"></i> {{ upload.name }}
                </div>
-               <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
+               <div class="flex h-4 overflow-hidden bg-gray-200 rounded dark:bg-gray-700">
                   <div class="transition-all progress-bar bg-blue-400" :style="{ width: upload.current_progress + '%' }"
                      :class="upload.variant">
                   </div>
@@ -114,9 +114,10 @@ export default {
                   this.addSong(song);
                }
 
-               this.uploads[uploadIndex].variant = 'bg-green-400';
+               this.uploads[uploadIndex].variant = 'bg-sky-400';
                this.uploads[uploadIndex].icon = 'fas fa-check';
-               this.uploads[uploadIndex].text_class = 'text-green-400';
+               this.uploads[uploadIndex].text_class = 'text-sky-400';
+               this.uploads[uploadIndex].text_class = 'dark:text-sky-400';
             });
          })
       },

@@ -1,6 +1,6 @@
 <template>
    <!-- Player -->
-   <div class="fixed bottom-0 left-0 bg-white px-8 py-3 w-screen">
+   <div class="fixed bottom-0 left-0 bg-white px-8 py-3 w-screen dark:bg-slate-600 dark:text-gray-50">
       <!-- Track Info -->
       <div class="text-center" v-if="current_song.modified_name">
          <span class="song-title font-bold">{{ current_song.modified_name }}</span> by
@@ -9,7 +9,7 @@
       <div class="flex flex-nowrap gap-4 items-center">
          <!-- Play/Pause Button -->
          <button type="button" @click.prevent="toggleAudio">
-            <i class="fa text-gray-500 text-xl "
+            <i class="fa text-gray-500 text-xl dark:text-gray-50"
                :class="{ 'fa-play hover:text-blue-400': !playing, 'fa-pause text-blue-500 hover:text-gray-400': playing }"></i>
          </button>
          <!-- Current Position -->

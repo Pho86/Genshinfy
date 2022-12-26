@@ -127,7 +127,9 @@ export default {
          this.reg_alert_variant = "bg-green-500";
          this.reg_alert_msg = "Paimon says yay. Your account has been created!";
 
-         window.location.reload();
+         setTimeout(() => {
+            window.location.reload();
+         }, 1000);
       },
    },
 }

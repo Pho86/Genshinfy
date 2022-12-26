@@ -11,9 +11,8 @@
          <img class="relative block mx-auto mt-5 -mb-10 w-auto" src="~/assets/img/hutao-wave.gif" />
       </section>
       <section class="container mx-auto">
-         <div class="bg-white rounded border border-gray-200 relative flex flex-col text-center">
-
-            <div class="px-6 pt-6 pb-6 border-b border-gray-200 content-center">
+         <div class="bg-white rounded border border-gray-200 relative flex flex-col text-center dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+            <div class="px-6 pt-6 pb-6 content-center">
                <template v-if="loading">
                   <div>
                      <p class="text-4xl text-slate-800">
@@ -35,13 +34,11 @@
                   <button class="ml-1 py-2 px-3 text-sm rounded text-white bg-sky-700 float-center mt-4 hover:bg-sky-900"
                      @click.prevent="fetchQuote">Generate New Quote</button>
                   <button class="ml-1 py-2 px-3 text-sm rounded text-white bg-amber-600 float-center mt-4 hover:bg-amber-900"
-                     @click.prevent="copyQuote">Copy Quote</button>
+                     @click.prevent="copyQuote">
+                     <p v-if="!copied">Copy Quote</p>
+                     <p v-else>Copied!</p>
+                  </button>
                </template>
-               <div v-if="copyAlert"
-                  class="text-white text-center font-bold p-4 mb-4 bg-slate-800 mt-5 w-3/12 justify-center mx-auto rounded-lg"
-                  @click.prevent="copyAlert = false">
-                  Text Copied!
-               </div>
 
             </div>
          </div>
@@ -59,7 +56,7 @@ export default {
          quote: {},
          loading: true,
          error: true,
-         copyAlert: false,
+         copied: false,
       }
    },
    created() {
@@ -84,7 +81,7 @@ export default {
       },
       copyQuote() {
          navigator.clipboard.writeText(this.quote.quote);
-         this.copyAlert = true;
+         this.copied = true;
       }
    }
 }

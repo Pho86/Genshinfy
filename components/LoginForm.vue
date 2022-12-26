@@ -65,8 +65,9 @@ export default {
 
          this.login_alert_variant = "bg-green-500";
          this.login_alert_msg = "Paimon says yay. You are logged in!";
-         
-         window.location.reload();
+         setTimeout(() => {
+            window.location.reload();
+         }, 1000);
       }
    }
 }

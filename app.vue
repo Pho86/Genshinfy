@@ -8,12 +8,8 @@
 
 </template>
 
-<script setup>
 
-</script>
-
-
-<script>
+<script lang="ts">
 import Header from "@/components/Header.vue"
 import Auth from "@/components/Auth.vue"
 import { mapWritableState } from "pinia";
@@ -39,25 +35,16 @@ export default {
   },
   async created() {
     const auth = this.auth;
-    const x = onAuthStateChanged(auth, (currentUser) => {
-      if(currentUser) {
+    const authChange = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
         this.userLoggedIn = true;
       }
     })
   }
-  // async created() {
-  //   this.auth = await firebase().auth;
-  //   if (this.auth.currentUser) {
-  //     this.userLoggedIn = true
-  //   }
-  //   else {
-  //     this.userLoggedIn = true
-  //   }
-  // }
 }
 </script>
 
-<script setup>
+<script setup lang="ts">
 
 </script>
 
