@@ -1,8 +1,9 @@
 import { initializeApp } from "firebase/app";
 import {
-   getAuth,
+   initializeAuth, browserLocalPersistence,
+   browserSessionPersistence, indexedDBLocalPersistence,
 } from "firebase/auth";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 import { getStorage } from 'firebase/storage'
 
 export default defineNuxtPlugin((_nuxtApp) => {
@@ -20,10 +21,12 @@ export default defineNuxtPlugin((_nuxtApp) => {
 
    // Initialize Firebase
    const app = initializeApp(firebaseConfig);
-   const auth = getAuth(app);
+   const auth = initializeAuth(app, {
+      persistence: [indexedDBLocalPersistence, browserSessionPersistence, browserLocalPersistence],
+   });
    const db = getFirestore(app);
    const storage = getStorage(app)
-   
+
    // console.log(auth)
 
    return { app, auth, db, storage }

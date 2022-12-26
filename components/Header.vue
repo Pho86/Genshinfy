@@ -22,7 +22,7 @@
               <NuxtLink class="px-2 text-white" to="/manage">Manage</NuxtLink>
             </li>
             <li>
-              <NuxtLink class="px-2 text-white" to="/favourites">Favourites</NuxtLink>
+              <NuxtLink class="px-2 text-white" :to="'/favourites/'">Favourites</NuxtLink>
             </li>
             <li>
               <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
@@ -37,8 +37,9 @@
 <script>
 import { mapStores } from 'pinia';
 import useModalStore from "@/stores/modal";
-import useUserStore from "@/stores/user"
-
+import useUserStore from "@/stores/user";
+import { signOut } from '@firebase/auth';
+import { firebaseAuth } from '@/composables/firebase';
 export default {
   name: "Header",
   computed: {
@@ -49,11 +50,17 @@ export default {
       this.modalStore.isOpen = !this.modalStore.isOpen;
     },
     signOut() {
+      const auth = firebaseAuth();
       this.userStore.signout();
-      if (this.$route.name === "manage") {
-        this.$router.push("/")
-      }
-    }
+      signOut(auth).then(() => {
+        if (this.$route.name === "manage") {
+          this.$router.push("/")
+        }
+
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
   },
 }
 </script>

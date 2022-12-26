@@ -173,9 +173,6 @@ export default {
 
          resetForm();
       },
-      log() {
-         console.log(this.favourited)
-      },
       async addFavourite() {
          const auth = this.auth;
 

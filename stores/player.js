@@ -120,8 +120,6 @@ export default defineStore("player", {
    },
 
    persist: {
-      storage: persistedState.cookiesWithOptions({
-         sameSite: 'strict',
-      }),
+      storage: persistedState.localStorage,
    },
 })

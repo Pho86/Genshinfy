@@ -38,5 +38,5 @@ export default defineStore("user", {
          await signOut(auth)
          this.userLoggedIn = false;
       }
-   }
+   },
 });

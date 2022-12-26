@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <NuxtLoadingIndicator color="#FFCF0D"/>
+    <NuxtLoadingIndicator color="#FFCF0D" />
     <transition name="fade" mode="out-in">
       <NuxtPage></NuxtPage>
     </transition>
@@ -18,8 +18,9 @@ import Header from "@/components/Header.vue"
 import Auth from "@/components/Auth.vue"
 import { mapWritableState } from "pinia";
 import useUserStore from "@/stores/user";
-import firebase from '@/server/firebase/firebase.ts';
+import { firebaseAuth } from "@/composables/firebase";
 import Player from "@/components/Player.vue";
+import { onAuthStateChanged } from "@firebase/auth";
 
 export default {
   name: "App",
@@ -33,20 +34,31 @@ export default {
   },
   data() {
     return {
-      auth: {},
+      auth: firebaseAuth(),
     }
   },
-
   async created() {
-    this.auth = await firebase().auth;
-    if (this.auth.currentUser) {
-      this.userLoggedIn = true
-    }
-    else {
-      this.userLoggedIn = true
-    }
+    const auth = this.auth;
+    const x = onAuthStateChanged(auth, (currentUser) => {
+      if(currentUser) {
+        this.userLoggedIn = true;
+      }
+    })
   }
+  // async created() {
+  //   this.auth = await firebase().auth;
+  //   if (this.auth.currentUser) {
+  //     this.userLoggedIn = true
+  //   }
+  //   else {
+  //     this.userLoggedIn = true
+  //   }
+  // }
 }
+</script>
+
+<script setup>
+
 </script>
 
 
