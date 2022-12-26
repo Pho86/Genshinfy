@@ -116,7 +116,6 @@ export default {
                songCollection = query(collection(db, "songs"), limit(this.maxPerPage), where("docID", "==", favDocIDs[i]), orderBy('modified_name'), startAfter(lastDoc));
                querySnapshot = await getDocs(songCollection);
                querySnapshot.forEach((doc) => {
-                  console.log(doc.data())
                   this.songs.push({
                      ...doc.data(),
                      docID: doc.id,
@@ -129,7 +128,6 @@ export default {
                songCollection = query(collection(db, "songs"), limit(this.maxPerPage), where("docID", "==", favDocIDs[i]), orderBy('modified_name'));
                querySnapshot = await getDocs(songCollection);
                querySnapshot.forEach((doc) => {
-                  console.log(doc.data())
                   this.songs.push({
                      ...doc.data(),
                      docID: doc.id,

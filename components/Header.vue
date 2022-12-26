@@ -2,9 +2,9 @@
   <header id="header" class="bg-slate-800">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
       <!-- App Name -->
+      <div class="flex flex-grow items-center textNav">
       <NuxtLink class="text-white font-bold uppercase text-2xl mr-4 no-active" to="/" exact-active-class="no-active">
         Genshinfy</NuxtLink>
-      <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
@@ -23,6 +23,34 @@
             </li>
             <li>
               <NuxtLink class="px-2 text-white" :to="'/favourites/'">Favourites</NuxtLink>
+            </li>
+            <li>
+              <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
+            </li>
+          </template>
+        </ul>
+      </div>
+      <div class="flex flex-grow items-center iconNav">
+      <NuxtLink class="text-white font-bold uppercase text-2xl mr-4 no-active" to="/" exact-active-class="no-active">
+        Genshinfy</NuxtLink>
+        <!-- Primary Navigation -->
+        <ul class="flex flex-row mt-1">
+          <!-- Navigation Links -->
+          <li>
+            <NuxtLink class="px-2 text-white" to="/about"><i class="fa fa-info-circle"></i></NuxtLink>
+          </li>
+          <li>
+            <NuxtLink class="px-2 text-white" to="/quotes"><i class="fa fa-quote-left"></i></NuxtLink>
+          </li>
+          <li v-if="!userStore.userLoggedIn">
+            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">Login / Register</a>
+          </li>
+          <template v-else>
+            <li>
+              <NuxtLink class="px-2 text-white" to="/manage"><i class="fa fa-tasks"></i></NuxtLink>
+            </li>
+            <li>
+              <NuxtLink class="px-2 text-white" :to="'/favourites/'"><i class="fa fa-star"></i></NuxtLink>
             </li>
             <li>
               <a class="px-2 text-white" href="#" @click.prevent="signOut">Logout</a>
@@ -84,13 +112,27 @@ export default {
     },
     toggleDarkMode() {
       this.darkMode = !this.darkMode
+      if (this.darkMode) {
+        document.body.parentElement.classList.add("dark")
+      } else {
+        document.body.parentElement.classList.remove("dark")
+      }
     },
   },
-  created() {
-    // console.log(this.$colorMode)
-  }
+
 }
 </script>
-<script setup lang="ts">
 
-</script>
+<style scoped>
+.iconNav {
+  display: none;
+}
+@media screen and (max-width:768px) {
+  .textNav {
+    display: none;
+  }
+  .iconNav {
+    display: flex;
+  }
+}
+</style>
