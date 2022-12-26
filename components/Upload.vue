@@ -35,7 +35,7 @@
 
 <script>
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { addDoc, doc, collection, getDoc } from '@firebase/firestore';
+import { addDoc, doc, collection, getDoc, updateDoc } from '@firebase/firestore';
 import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
 export default {
    name: "Upload",
@@ -108,7 +108,9 @@ export default {
                      ...docSnap.data(),
                      docID: docSnap.id,
                   }
-                  console.log(song)
+                  const update = await updateDoc(docRef, {
+                     docID: song.docID
+                  })
                   this.addSong(song);
                }
 

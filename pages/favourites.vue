@@ -42,7 +42,7 @@
  
  
 <script>
-import { getDocs, query, collection, limit, startAfter, getDoc, doc, orderBy } from '@firebase/firestore';
+import { getDocs, query, collection, limit, startAfter, getDoc, doc, orderBy, where } from '@firebase/firestore';
 import AppSongItem from "@/components/SongItem.vue";
 import { firebaseDB, firebaseAuth } from '@/composables/firebase';
 import { mapActions } from 'pinia';
@@ -58,6 +58,7 @@ export default {
          pendingRequest: false,
          database: firebaseDB(),
          auth: firebaseAuth(),
+         songIDs: [],
       }
    },
    components: {
@@ -93,26 +94,47 @@ export default {
             return;
          }
          this.pendingRequest = true;
+         const auth = this.auth;
          const db = this.database;
+
+         const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid));
+         const favSnapshots = await getDocs(favouriteCollection);
+         let favDocIDs = [];
+         favSnapshots.forEach((doc) => {
+            favDocIDs.push(doc.data().songID)
+         });
+
          let querySnapshot;
+         let songCollection;
 
          if (this.songs.length) {
             const lastDocRef = doc(db, "songs", (this.songs[this.songs.length - 1].docID))
             const lastDoc = await getDoc(lastDocRef)
-            const songCollection = await query(collection(db, "songs"), limit(this.maxPerPage), orderBy('modified_name'), startAfter(lastDoc));
-            querySnapshot = await getDocs(songCollection);
+            for (let i = 0; i < favDocIDs.length; i++) {
+               songCollection = query(collection(db, "songs"), limit(this.maxPerPage), where("docID", "==", favDocIDs[i]), orderBy('modified_name'), startAfter(lastDoc));
+               querySnapshot = await getDocs(songCollection);
+               querySnapshot.forEach((doc) => {
+                  console.log(doc.data())
+                  this.songs.push({
+                     ...doc.data(),
+                     docID: doc.id,
+                  })
+               })
+            }
          }
-
          else {
-            const songCollection = await query(collection(db, "songs"), limit(this.maxPerPage), orderBy('modified_name'));
-            querySnapshot = await getDocs(songCollection);
+            for (let i = 0; i < favDocIDs.length; i++) {
+               songCollection = query(collection(db, "songs"), limit(this.maxPerPage), where("docID", "==", favDocIDs[i]), orderBy('modified_name'));
+               querySnapshot = await getDocs(songCollection);
+               querySnapshot.forEach((doc) => {
+                  console.log(doc.data())
+                  this.songs.push({
+                     ...doc.data(),
+                     docID: doc.id,
+                  })
+               })
+            }
          }
-         querySnapshot.forEach((doc) => {
-            this.songs.push({
-               ...doc.data(),
-               docID: doc.id,
-            })
-         })
          this.pendingRequest = false;
       }
    },
@@ -121,10 +143,10 @@ export default {
 </script>
  
 <script setup>
-
 const { vIcon } = useVIcon()
 
 </script>
+
 <style>
 .header {
    background-image: url('~/assets/img/song-header.png');
