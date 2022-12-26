@@ -18,6 +18,7 @@ export default defineNuxtConfig({
    },
    modules: [
       '@nuxtjs/tailwindcss',
+      '@nuxtjs/google-fonts',
       [
          '@pinia/nuxt',
          {
@@ -30,6 +31,15 @@ export default defineNuxtConfig({
       ],
       '@pinia-plugin-persistedstate/nuxt',
    ],
+
+   googleFonts: {
+      families: {
+         // Roboto: true,
+         'Noto+Sans': true,
+         'Merriweather+Sans': true,
+      }
+   },
+
    piniaPersistedstate: {
       cookieOptions: {
          sameSite: 'strict',
@@ -42,10 +52,12 @@ export default defineNuxtConfig({
       "~/plugins/vee-validate-rules.ts",
 
    ],
+
    build: {
       transpile: ["vee-validate"],
       analyze: true
    },
+
    runtimeConfig: {
       // The private keys which are only available server-side
       apiSecret: '123',

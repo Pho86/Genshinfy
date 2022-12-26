@@ -5,13 +5,16 @@
 
 Genshinfy is a non-commercial music streaming project for personal use. It uses Nuxt 3/Vue, TailwindCSS, TS, Firebase, and Howler. Currently hosted on [Vercel](https://genshinfy.vercel.app/).
 
-## To-do
+## To-Do
 
--   [ ] Allow users to create a playlists and share to other users
--   [ ] Profile Pages
+-   [ ] Allow users to create playlists and share links to other users
+-   [ ] Profile Pages for artists/users
+-   [ ] Music Queue Page to display current queue
 -   [ ] Next/Back buttons to control music queue 
--   [ ] Volume Slider
+-   [ ] Volume Slider 
 -   [ ] Music Player Settings
+-   [ ] Display what current song is playing by highlighting it on the page
+-   [ ] Music thumbnails
 
 ## Nuxt 3 Minimal Starter
 

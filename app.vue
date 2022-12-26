@@ -54,6 +54,10 @@ export default {
 @import 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css';
 @import '~/assets/css/main.scss';
 
+body {
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
 .main-banner {
   background-image: url('~/assets/img/header.png');
   z-index: -1;
@@ -67,6 +71,6 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  filter: blur(.2rem);
+  filter: blur(.3rem);
 }
 </style>

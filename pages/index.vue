@@ -11,7 +11,7 @@
             offers a wide selection of songs from the game, making it easy for fans to enjoy their favorite music.
             <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for battle,
             Genshinfy has you covered with its extensive collection of music. Whether you're a casual player or a
-            hardcore fan, Genshinfy is a great resource for anyone who loves music.
+            hardcore fan, Genshinfy is a place for you to listen to music.
           </p>
         </div>
       </div>
