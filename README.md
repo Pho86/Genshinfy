@@ -1,13 +1,23 @@
-this is a non-commercial project for personal use.
+# Genshinfy
+<p align="center">
+    <img alt="[Hu Tao Listening to music" src="/assets/img/hutao-music.gif">
+</p>
 
-uses nuxt js/vue, tailwindcss, ts, and firebase
+Genshinfy is a non-commercial music streaming project for personal use. It uses Nuxt 3/Vue, TailwindCSS, TS, Firebase, and Howler. Currently hosted on [Vercel](https://genshinfy.vercel.app/).
 
+## To-do
 
-# Nuxt 3 Minimal Starter
+-   [ ] Allow users to create a playlists and share to other users
+-   [ ] Profile Pages
+-   [ ] Next/Back buttons to control music queue 
+-   [ ] Volume Slider
+-   [ ] Music Player Settings
+
+## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Setup
+### Setup
 
 Make sure to install the dependencies:
 
@@ -22,7 +32,7 @@ npm install
 pnpm install --shamefully-hoist
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on http://localhost:3000
 
@@ -30,7 +40,7 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
