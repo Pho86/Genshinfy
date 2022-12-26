@@ -52,7 +52,7 @@ export default {
 
 <style>
 @import 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css';
-@import '~/assets/css/main.css';
+@import '~/assets/css/main.scss';
 
 .main-banner {
   background-image: url('~/assets/img/header.png');

@@ -9,7 +9,8 @@
       <div class="flex flex-nowrap gap-4 items-center">
          <!-- Play/Pause Button -->
          <button type="button" @click.prevent="toggleAudio">
-            <i class="fa text-gray-500 text-xl" :class="{ 'fa-play': !playing, 'fa-pause': playing }"></i>
+            <i class="fa text-gray-500 text-xl "
+               :class="{ 'fa-play hover:text-blue-400': !playing, 'fa-pause text-blue-500 hover:text-gray-400': playing }"></i>
          </button>
          <!-- Current Position -->
          <div class="player-currenttime">{{ seek }}</div>
@@ -20,7 +21,7 @@
                <i class="fas fa-circle"></i>
             </span>
             <!-- Player Progress Bar-->
-            <span class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
+            <span class="block h-2 rounded bg-gradient-to-r from-blue-500 to-blue-400"
                :style="{ width: playerProgress }"></span>
          </div>
          <!-- Duration -->
@@ -41,7 +42,7 @@ export default {
    data() {
       return {
          looping: false,
-         loop_class: "text-gray-500",
+         loop_class: "text-gray-400",
       }
    },
    methods: {
@@ -49,11 +50,11 @@ export default {
       async toggleLoop() {
          this.looping = !this.looping;
          if (this.looping === false) {
-            this.loop_class = "text-grey-400";
+            this.loop_class = "text-gray-400";
             this.loop = this.looping
          } else {
             this.loop = this.looping
-            this.loop_class = "text-green-500";
+            this.loop_class = "text-blue-500";
          }
       }
    },

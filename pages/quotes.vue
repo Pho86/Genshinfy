@@ -32,9 +32,9 @@
                      <p class="italic leading-loose">- {{ quote.character }} from <span class="">{{ quote.anime }}
                         </span></p>
                   </div>
-                  <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-blue-600 float-center mt-5"
+                  <button class="ml-1 py-2 px-3 text-sm rounded text-white bg-sky-700 float-center mt-4 hover:bg-sky-900"
                      @click.prevent="fetchQuote">Generate New Quote</button>
-                  <button class="ml-1 py-1 px-2 text-sm rounded text-white bg-yellow-600 float-center mt-5"
+                  <button class="ml-1 py-2 px-3 text-sm rounded text-white bg-amber-600 float-center mt-4 hover:bg-amber-900"
                      @click.prevent="copyQuote">Copy Quote</button>
                </template>
                <div v-if="copyAlert"

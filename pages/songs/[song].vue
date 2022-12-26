@@ -5,22 +5,22 @@
          <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg header"></div>
          <div class="container mx-auto flex items-center">
             <!-- Play/Pause Button -->
-            <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
+            <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none hover:text-blue-600"
                @click.prevent="newSong(song)">
                <i class="fas fa-play"></i>
             </button>
             <button type="button"
-               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 hover:text-blue-600"
                @click.prevent="addQueue(song)">
                <i class="fas fa-plus"></i>
             </button>
             <button type="button" v-if="!favourited"
-               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 hover:text-blue-600"
                @click.prevent="addFavourite">
                <i class="fas fa-heart"></i>
             </button>
             <button type="button" v-else
-               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 text-blue-700"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 text-blue-700 hover:text-stone-900"
                @click.prevent="removeFavourite">
                <i class="fas fa-heart"></i>
             </button>
@@ -28,7 +28,8 @@
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
                <div>{{ song.genre }}</div>
-               <div v-if="song.favourited > 0">{{ song.favourited }} people have favourited this song.</div>
+               <div v-if="song.favourited == 1">{{ song.favourited }} person has favourited this song.</div>
+               <div v-else-if="song.favourited > 1">{{ song.favourited }} people have favourited this song.</div>
                <div v-else>No one has favourited this song 😓</div>
             </div>
          </div>
@@ -51,7 +52,7 @@
                      class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded mb-4"
                      placeholder="Your comment here..."></VField>
                   <VErrorMessage class="text-red-600" name="comment" />
-                  <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block"
+                  <button type="submit" class="py-1.5 px-3 rounded text-white bg-green-600 block hover:bg-green-800"
                      :disabled="comment_in_submission">
                      Submit
                   </button>

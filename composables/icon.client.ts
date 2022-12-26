@@ -17,7 +17,7 @@ export const useVIcon = (): vIconReturn => ({
       if (binding.modifiers.yellow) {
         iconClass += ' text-yellow-500';
       } else {
-        iconClass += ' text-green-400'
+        iconClass += ' text-sky-400'
       }
       el.innerHTML += `<i class="${iconClass}"> </i>`;
     },
