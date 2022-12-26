@@ -27,7 +27,7 @@
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
-               <div>{{ song.genre }}</div>
+               <div>{{ song.genre }} - <NuxtLink :to="'/album/' + song.album">{{ song.album }}</NuxtLink></div>
                <div v-if="song.favourited == 1">{{ song.favourited }} person has favourited this song.</div>
                <div v-else-if="song.favourited > 1">{{ song.favourited }} people have favourited this song.</div>
                <div v-else>No one has favourited this song 😓</div>

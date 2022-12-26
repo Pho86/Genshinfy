@@ -94,14 +94,13 @@ export default {
                   modified_name: uploadFile.snapshot.ref.name,
                   genre: '',
                   comment_count: 0,
+                  album: "none"
                };
                song.url = await getDownloadURL(uploadFile.snapshot.ref)
                const db = this.database;
 
                const songRef = await addDoc(collection(db, "songs"), song)
-               console.log(songRef.id)
                const docRef = await doc(db, "songs", songRef.id)
-               console.log(docRef)
                const docSnap = await getDoc(docRef)
                if (docSnap.exists()) {
                   const song = {

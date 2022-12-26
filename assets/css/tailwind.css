@@ -16,3 +16,7 @@ body {
 .no-active {
    color: #FFFFFF;
 }
+.no-active-link {
+   @apply text-gray-500
+   
+}

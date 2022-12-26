@@ -1,10 +1,13 @@
 <template>
    <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50 dark:hover:bg-gray-500">
       <div>
-         <NuxtLink :to="'/songs/' + song.docID" class="font-bold block text-gray-600 dark:text-gray-50">
+         <NuxtLink :to="'/songs/' + song.docID" class="font-bold block text-gray-600 dark:text-gray-50 dark:hover:text-yellow-500">
             {{ song.modified_name }}
          </NuxtLink>
-         <span class="text-gray-500 text-sm dark:text-gray-50">{{ song.display_name }}</span>
+         <span class="text-gray-500 text-sm dark:text-gray-50">{{ song.display_name }} - </span>
+         <NuxtLink :to="'/album/' + song.album" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
+            {{ song.album }}
+         </NuxtLink>
       </div>
 
       <div class="text-gray-600 text-lg dark:text-gray-50">

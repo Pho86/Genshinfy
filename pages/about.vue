@@ -19,7 +19,7 @@
                      class="text-yellow-500 font-bold">phoph@duck.com.</NuxtLink>
                   <br> <br>
                   The loop button, only loops the current song. To have songs auto-play after another song, multiple songs must be favourited, and then
-                  played through the favourite page. Sorry for the inconvenience.
+                  played through the favourite page or played through an album. Sorry for the inconvenience. More features will come out soon.
                </p>
 
             </div>
@@ -37,6 +37,7 @@ export default {
 </script>
 
 <style scoped>
+
 .main-banner {
    background-image: url('~/assets/img/user-header.png');
    z-index: -1;

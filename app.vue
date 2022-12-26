@@ -70,6 +70,6 @@ body {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
-  filter: blur(.3rem);
+  filter: blur(.25rem);
 }
 </style>
