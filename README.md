@@ -11,7 +11,7 @@ Genshinfy is a non-commercial music streaming project for personal use. It uses 
 -   [ ] Profile Pages for artists/users
 -   [ ] Music Queue Page to display current queue
 -   [ ] Next/Back buttons to control music queue 
--   [ ] Volume Slider 
+-   [ ] Better micro interactions
 -   [ ] Music Player Settings
 -   [ ] Display what current song is playing by highlighting it on the page
 -   [ ] Music thumbnails?
