@@ -15,16 +15,18 @@
                @click.prevent="addQueue(song)">
                <i class="fas fa-plus"></i>
             </button>
-            <button type="button" v-if="!favourited"
-               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 hover:text-blue-600"
-               @click.prevent="addFavourite">
-               <i class="fas fa-heart"></i>
-            </button>
-            <button type="button" v-else
-               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 text-blue-700 hover:text-stone-900"
-               @click.prevent="removeFavourite">
-               <i class="fas fa-heart"></i>
-            </button>
+            <template v-if="auth.currentUser">
+               <button type="button" v-if="!favourited"
+                  class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 hover:text-blue-600"
+                  @click.prevent="addFavourite">
+                  <i class="fas fa-heart"></i>
+               </button>
+               <button type="button" v-else
+                  class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 text-blue-700 hover:text-stone-900"
+                  @click.prevent="removeFavourite">
+                  <i class="fas fa-heart"></i>
+               </button>
+            </template>
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
@@ -78,7 +80,9 @@
             v-for="comment in sortedComments" :key="comment.docID">
             <!-- Comment Author -->
             <div class="mb-5">
-               <div class="font-bold"><NuxtLink :to="'/profile/' + comment.uid">{{ comment.name }}</NuxtLink></div>
+               <div class="font-bold">
+                  <NuxtLink :to="'/profile/' + comment.uid">{{ comment.name }}</NuxtLink>
+               </div>
                <time>{{ comment.datePosted }}</time>
             </div>
             <p>
@@ -88,6 +92,7 @@
       </ul>
    </main>
 </template>
+
 
 <script>
 import { doc, getDoc, addDoc, collection, where, query, getDocs, updateDoc, deleteDoc } from '@firebase/firestore';
@@ -146,8 +151,6 @@ export default {
          vm.getFavourite();
       })
 
-   },
-   created() {
    },
    methods: {
       ...mapActions(usePlayerStore, ["newSong", "addQueue"]),
@@ -234,22 +237,21 @@ export default {
          const userSong = await updateDoc(userFav, {
             favourited: favourited
          })
-
-
-
       },
       async getFavourite() {
-
          const db = this.database;
          const auth = this.auth;
-         const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
-         const favSnapshots = await getDocs(favouriteCollection);
+         if (auth.currentUser) {
 
-         favSnapshots.forEach((doc) => {
-            if (doc) {
-               this.favourited = true;
-            }
-         });
+            const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
+            const favSnapshots = await getDocs(favouriteCollection);
+
+            favSnapshots.forEach((doc) => {
+               if (doc) {
+                  this.favourited = true;
+               }
+            });
+         }
       },
       async getComments() {
          const db = this.database;
