@@ -26,6 +26,16 @@
          </div>
          <!-- Duration -->
          <div class="player-duration">{{ duration }}</div>
+
+         <div @click.prevent="updateVol" class="w-1/12 h-2 rounded bg-gray-200 relative cursor-pointer">
+            <!-- Player Ball -->
+            <span class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" :style="{ left: volumeSlider }">
+               <i class="fas fa-circle"></i>
+            </span>
+            <!-- Player Progress Bar-->
+            <span class="block h-2 rounded bg-gradient-to-r from-blue-500 to-blue-400"
+               :style="{ width: volumeSlider }"></span>
+         </div>
          <button type="button" @click.prevent="toggleLoop">
             <i class="fas fa-repeat" :class="loop_class"></i>
          </button>
@@ -46,7 +56,7 @@ export default {
       }
    },
    methods: {
-      ...mapActions(usePlayerStore, ["toggleAudio", "updateSeek", "toggleLoop"]),
+      ...mapActions(usePlayerStore, ["toggleAudio", "updateSeek", "toggleLoop", "volumeSlider"]),
       async toggleLoop() {
          this.looping = !this.looping;
          if (this.looping === false) {
@@ -59,7 +69,7 @@ export default {
       }
    },
    computed: {
-      ...mapState(usePlayerStore, ["playing", "duration", "seek", "playerProgress", "current_song"]),
+      ...mapState(usePlayerStore, ["playing", "duration", "seek", "playerProgress", "current_song", "volume"]),
       ...mapWritableState(usePlayerStore, ["loop"])
    }
 }

@@ -7,22 +7,36 @@
         <div class="text-white main-header-content">
           <h1 class="font-bold text-5xl mb-5">Listen to Genshinfy Music!</h1>
           <p class="w-full md:w-8/12 mx-auto">
-            Genshinfy is a music streaming platform that allows users to easily listen to music mainly from the game Genshin Impact. It
+            Genshinfy is a music streaming platform that allows users to easily listen to music mainly from the game
+            Genshin Impact. It
             offers a wide selection of songs from the game, making it easy for fans to enjoy their favorite music.
             <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for battle,
             Genshinfy has you covered with its extensive collection of music. Whether you're a casual player or a
-            hardcore fan, Genshinfy is a place for you to listen to music.
+            hardcore fan, Genshinfy is a place for you to listen to music. (You may upload whatever type of music you want.)
           </p>
         </div>
       </div>
 
-      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full" src="~/assets/img/introduction-music.png" alt="a collection of music players, a cassette, mp3 player, disc, radio, piano, cd, and headphones"/>
+      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full" src="~/assets/img/introduction-music.png"
+        alt="a collection of music players, a cassette, mp3 player, disc, radio, piano, cd, and headphones" />
     </section>
 
+    <!-- <section class="container mx-auto">
+      <div
+        class="bg-white rounded border border-gray-200 bg-white-500 relative flex flex-col dark:bg-gray-700 dark:border-gray-500">
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 dark:border-gray-500"
+          v-icon.right="'headphones-alt'">
+          <span class="card-title dark:text-gray-100">Recommended Songs</span>
+        </div>
+
+      </div>
+    </section> -->
     <!-- Main Content -->
     <section class="container mx-auto">
-      <div class="bg-white rounded border border-gray-200 bg-white-500 relative flex flex-col dark:bg-gray-700 dark:border-gray-500">
-        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 dark:border-gray-500" v-icon.right="'headphones-alt'">
+      <div
+        class="bg-white rounded border border-gray-200 bg-white-500 relative flex flex-col dark:bg-gray-700 dark:border-gray-500">
+        <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 dark:border-gray-500"
+          v-icon.right="'headphones-alt'">
           <span class="card-title dark:text-gray-100">Songs</span>
         </div>
         <!-- Playlist -->
@@ -57,8 +71,8 @@ export default {
     AppSongItem
   },
   async created() {
-    this.getSongs();
-
+    await this.getSongs();
+    console.log(this.songs)
     if (process.client) {
       window.addEventListener("scroll", this.handleScroll)
     }

@@ -16,7 +16,7 @@
                <p>Genshinfy is a music streaming site, created as a <span class="font-bold">non-commercial
                      personal project</span> to practice using NuxtJS/Vue/Firebase. If you want something taken down or
                   if you have any questions, please contact me at <NuxtLink to="mailto:phoph@duck.com" target="_blank"
-                     class="text-yellow-500 font-bold">phoph@duck.com.</NuxtLink>
+                     class="text-yellow-500 font-bold">phoph@duck.com.</NuxtLink> The site currently only accepts mp3 files under 10MB.
                   <br> <br>
                   The loop button, only loops the current song. To have songs auto-play after another song, multiple songs must be favourited, and then
                   played through the favourite page or played through an album. Sorry for the inconvenience. More features will come out soon.
