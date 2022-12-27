@@ -26,7 +26,6 @@ export default defineStore("player", {
          this.sound = new Howl({
             src: [song.url],
             html5: true,
-            // volume: this.volume || 1.0,
             onend: this.checkNextSong
          });
 

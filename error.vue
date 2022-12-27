@@ -16,7 +16,7 @@
                   class="bg-white rounded border border-gray-200 relative flex flex-col text-center dark:border-gray-500">
                   <div
                      class="px-6 pt-6 pb-6 border-b border-gray-200 flex flex-col items-center dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
-                     <p> We are sorry.
+                     <p> We are sorry and apologize for any inconvenice that might have occured. <NuxtLink class="text-yellow-400" to="/">Please go back home.</NuxtLink>
                      </p>
                      <img class="justify-self-center" src="https://media.tenor.com/bN43FNYePAcAAAAi/hutao.gif"
                         alt="hu tao rub" width="250" />
