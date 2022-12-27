@@ -1,11 +1,8 @@
-export default defineStore("modal", {
-   state: () => ({
-     isOpen: false,
-   }),
-   getters: {
-     hiddenClass(state) {
-       return !state.isOpen ? "hidden" : "";
-     },
-   },
- });
- 
+export default defineStore("darkmode", {
+  state: () => ({
+    darkMode: false,
+  }),
+  persist: {
+    storage: persistedState.localStorage,
+  },
+});

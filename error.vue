@@ -19,7 +19,7 @@
                      <p> We are sorry and apologize for any inconvenice that might have occured. <NuxtLink class="text-yellow-400" to="/">Please go back home.</NuxtLink>
                      </p>
                      <img class="justify-self-center" src="https://media.tenor.com/bN43FNYePAcAAAAi/hutao.gif"
-                        alt="hu tao rub" width="250" />
+                        alt="hand rubbing a chibi hu tao" width="250" />
                   </div>
                </div>
             </section>
