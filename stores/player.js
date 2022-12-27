@@ -10,13 +10,13 @@ export default defineStore("player", {
       duration: "00:00",
       playerProgress: "0%",
       volumeSlider: "100%",
+      volume: 1.0,
       loop: false,
       randomize: false,
       muted: false,
    }),
    actions: {
       async newSong(song) {
-         console.log(this.loop)
          if (this.sound instanceof Howl) {
             this.sound.unload();
          }
@@ -55,7 +55,6 @@ export default defineStore("player", {
       },
 
       async checkNextSong() {
-         console.log(this.loop)
          if (this.loop) {
             this.sound.play()
             return;
@@ -83,22 +82,23 @@ export default defineStore("player", {
       },
       updateVolume(event) {
          const { x, width } = event.currentTarget.getBoundingClientRect();
-         console.log(event.currentTarget.getBoundingClientRect())
+
          const clickX = event.clientX - x;
-         const percentage = clickX / width;
+         this.volume = clickX / width;
          
-         console.log(percentage)
-         if(percentage < 0) {
+         if(this.volume < 0) {
             this.volumeSlider = "0%"
             Howler.volume(0);
             this.muted = true
          } else {
-            this.volumeSlider =  `${percentage * 100}%`
-            Howler.volume(percentage);
+            this.muted = false
+            this.volumeSlider =  `${this.volume * 100}%`
+            Howler.volume(this.volume);
          }
       },
 
       playPlaylist(songs) {
+         this.randomize = false;
          this.next_song = songs.slice();
          this.newSong(this.next_song[0]);
          this.next_song.shift();
