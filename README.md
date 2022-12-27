@@ -14,7 +14,7 @@ Genshinfy is a non-commercial music streaming project for personal use. It uses 
 -   [ ] Volume Slider 
 -   [ ] Music Player Settings
 -   [ ] Display what current song is playing by highlighting it on the page
--   [ ] Music thumbnails
+-   [ ] Music thumbnails?
 
 ## Nuxt 3 Minimal Starter
 
