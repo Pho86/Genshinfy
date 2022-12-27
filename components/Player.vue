@@ -28,13 +28,13 @@
          <div class="player-duration">{{ duration }}</div>
 
          <!-- <button type="button"> -->
-            <i class="fas fa-volume text-sky-400"></i>
+         <i class="fas fa-volume text-sky-400"></i>
          <!-- </button> -->
          <div @click.prevent="updateVolume" class="w-1/12 h-2 rounded bg-gray-200 relative cursor-pointer">
             <!-- Volume Ball -->
-               <span  class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" :style="{ left: volumeSlider }">
-                  <i class="fas fa-circle"></i>
-               </span>
+            <span class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" :style="{ left: volumeSlider }">
+               <i class="fas fa-circle"></i>
+            </span>
             <!-- Volume Bar-->
             <span class="block h-2 rounded bg-gradient-to-r from-blue-500 to-blue-400"
                :style="{ width: volumeSlider }"></span>
@@ -56,7 +56,15 @@ export default {
       return {
          looping: false,
          loop_class: "text-gray-400",
-         is_dragover: false,
+      }
+   },
+   mounted() {
+      if (this.loop === true) {
+         this.looping = true;
+         this.loop_class = "text-blue-500";
+      } else {
+         this.looping = false;
+         this.loop_class = "text-gray-400";
       }
    },
    methods: {

@@ -8,12 +8,8 @@ export default defineStore("user", {
    }),
    actions: {
       async register(values) {
-         // console.log(firebase())
-         // console.log(values)
          const auth = firebase().auth;
-         // const firebase = firebase();
          const db = firebase().db;
-         // console.log(firebase)
          const userCred = await createUserWithEmailAndPassword(auth, values.email, values.password);
 
          const usersRef = await setDoc(doc(db, "users", userCred.user.uid), {
