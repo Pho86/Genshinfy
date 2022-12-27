@@ -11,7 +11,8 @@
          <img class="relative block mx-auto mt-5 -mb-10 w-auto" src="~/assets/img/hutao-wave.gif" />
       </section>
       <section class="container mx-auto">
-         <div class="bg-white rounded border border-gray-200 relative flex flex-col text-center dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+         <div
+            class="bg-white rounded border border-gray-200 relative flex flex-col text-center dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
             <div class="px-6 pt-6 pb-6 content-center">
                <template v-if="loading">
                   <div>
@@ -31,9 +32,11 @@
                      <p class="italic leading-loose">- {{ quote.character }} from <span class="">{{ quote.anime }}
                         </span></p>
                   </div>
-                  <button class="ml-1 py-2 px-3 text-sm rounded text-white bg-sky-700 float-center mt-4 hover:bg-sky-900"
+                  <button
+                     class="ml-1 py-2 px-3 text-sm rounded text-white bg-sky-700 float-center mt-4 hover:bg-sky-900"
                      @click.prevent="fetchQuote">Generate New Quote</button>
-                  <button class="ml-1 py-2 px-3 text-sm rounded text-white bg-amber-600 float-center mt-4 hover:bg-amber-900"
+                  <button
+                     class="ml-1 py-2 px-3 text-sm rounded text-white bg-amber-600 float-center mt-4 hover:bg-amber-900"
                      @click.prevent="copyQuote">
                      <p v-if="!copied">Copy Quote</p>
                      <p v-else>Copied!</p>
@@ -74,8 +77,8 @@ export default {
                this.quote = quote;
             })
             .catch((error) => {
-               this.loading = false;
                console.log(error)
+               this.loading = false;
                this.error = true;
             });
       },

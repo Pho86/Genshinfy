@@ -99,7 +99,7 @@ export default {
          this.pendingRequest = true;
          const db = this.database;
 
-         const albumCollection = await query(collection(db, "songs"), where('album', '==', this.$route.params.name));
+         const albumCollection = query(collection(db, "songs"), where('album', '==', this.$route.params.name));
          const albumSnapshots = await getDocs(albumCollection);
          let albumDocIDs = [];
          albumSnapshots.forEach((doc) => {

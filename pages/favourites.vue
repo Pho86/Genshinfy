@@ -49,7 +49,9 @@ import { getDocs, query, collection, limit, startAfter, getDoc, doc, orderBy, wh
 import AppSongItem from "@/components/SongItem.vue";
 import { firebaseDB, firebaseAuth } from '@/composables/firebase';
 import { mapActions } from 'pinia';
-import usePlayerStore from "@/stores/player"
+import usePlayerStore from "@/stores/player";
+import useUserStore from "@/stores/user";
+
 
 export default {
    name: "Favourites",
@@ -77,6 +79,14 @@ export default {
    beforeUnmount() {
       if (process.client) {
          window.removeEventListener("scroll", this.handleScroll);
+      }
+   },
+   beforeRouteEnter(to, from, next) {
+      const store = useUserStore();
+      if (store.userLoggedIn) {
+         next();
+      } else {
+         next('/')
       }
    },
    methods: {

@@ -134,7 +134,7 @@ export default {
    },
    async beforeRouteEnter(to, from, next) {
       const db = await firebaseDB();
-      const song = await doc(db, "songs", to.params.song);
+      const song = doc(db, "songs", to.params.song);
       const songSnapshot = await getDoc(song);
 
       next((vm) => {
@@ -171,7 +171,7 @@ export default {
          const db = this.database;
          const addSong = await addDoc(collection(db, "comments"), comment);
          this.song.comment_count += 1;
-         const currentDoc = await doc(db, "songs", this.$route.params.song)
+         const currentDoc = doc(db, "songs", this.$route.params.song)
          const currentSong = await updateDoc(currentDoc, {
             comment_count: this.song.comment_count
          })
@@ -196,12 +196,12 @@ export default {
          }
          const addFavourite = await addDoc(collection(db, "favourites"), favouriteInfo);
          this.song.favourited += 1;
-         const currentDoc = await doc(db, "songs", this.$route.params.song);
+         const currentDoc = doc(db, "songs", this.$route.params.song);
          const currentSong = await updateDoc(currentDoc, {
             favourited: this.song.favourited
          })
 
-         const userFav = await doc(db, "users", this.song.uid)
+         const userFav = doc(db, "users", this.song.uid)
          const userFavDoc = await getDoc(userFav)
          let favourited = userFavDoc.data().favourited
          console.log(favourited)
@@ -215,7 +215,7 @@ export default {
          const auth = this.auth;
          this.favourited = false;
 
-         const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
+         const favouriteCollection = query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
          const favSnapshots = await getDocs(favouriteCollection);
          let favDoc;
          favSnapshots.forEach((doc) => {
@@ -224,12 +224,12 @@ export default {
          const deleteFavourite = await deleteDoc(doc(db, "favourites", favDoc))
 
          this.song.favourited -= 1;
-         const currentDoc = await doc(db, "songs", this.$route.params.song);
+         const currentDoc = doc(db, "songs", this.$route.params.song);
          const currentSong = await updateDoc(currentDoc, {
             favourited: this.song.favourited
          });
 
-         const userFav = await doc(db, "users", this.song.uid)
+         const userFav = doc(db, "users", this.song.uid)
          const userFavDoc = await getDoc(userFav)
          let favourited = userFavDoc.data().favourited
          console.log(favourited)
@@ -243,7 +243,7 @@ export default {
          const auth = this.auth;
          if (auth.currentUser) {
 
-            const favouriteCollection = await query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
+            const favouriteCollection = query(collection(db, "favourites"), where('uid', '==', auth.currentUser.uid), where('songID', '==', this.$route.params.song));
             const favSnapshots = await getDocs(favouriteCollection);
 
             favSnapshots.forEach((doc) => {
@@ -256,7 +256,7 @@ export default {
       async getComments() {
          const db = this.database;
 
-         const songCollection = await query(collection(db, "comments"), where('songID', '==', this.$route.params.song));
+         const songCollection = query(collection(db, "comments"), where('songID', '==', this.$route.params.song));
          const songSnapshots = await getDocs(songCollection);
          this.comments = [];
 
