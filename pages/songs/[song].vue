@@ -5,7 +5,8 @@
          <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg header"></div>
          <div class="container mx-auto flex items-center">
             <!-- Play/Pause Button -->
-            <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none hover:text-blue-600"
+            <button type="button"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none hover:text-blue-600"
                @click.prevent="newSong(song)">
                <i class="fas fa-play"></i>
             </button>
@@ -27,7 +28,11 @@
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
-               <div>{{ song.genre }} - <NuxtLink :to="'/album/' + song.album">{{ song.album }}</NuxtLink></div>
+               <div>
+                  <NuxtLink :to="'/profile/' + song.uid">
+                     {{ song.display_name }} -
+                  </NuxtLink>{{ song.genre }} - <NuxtLink :to="'/album/' + song.album">{{ song.album }}</NuxtLink>
+               </div>
                <div v-if="song.favourited == 1">{{ song.favourited }} person has favourited this song.</div>
                <div v-else-if="song.favourited > 1">{{ song.favourited }} people have favourited this song.</div>
                <div v-else>No one has favourited this song 😓</div>
@@ -36,7 +41,8 @@
       </section>
       <!-- Form -->
       <section class="container mx-auto mt-6" id="comments">
-         <div class="bg-white rounded border border-gray-200 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+         <div
+            class="bg-white rounded border border-gray-200 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
             <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
                <!-- Comment Count -->
                <span class="card-title">Comments {{ song.comment_count }}</span>
@@ -68,10 +74,11 @@
       </section>
       <!-- Comments -->
       <ul class="container mx-auto">
-         <li class="p-6 bg-gray-50 border border-gray-200 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50" v-for="comment in sortedComments" :key="comment.docID">
+         <li class="p-6 bg-gray-50 border border-gray-200 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50"
+            v-for="comment in sortedComments" :key="comment.docID">
             <!-- Comment Author -->
             <div class="mb-5">
-               <div class="font-bold">{{ comment.name }}</div>
+               <div class="font-bold"><NuxtLink :to="'/profile/' + comment.uid">{{ comment.name }}</NuxtLink></div>
                <time>{{ comment.datePosted }}</time>
             </div>
             <p>
@@ -203,7 +210,7 @@ export default {
             favDoc = doc.id
          });
          const deleteFavourite = await deleteDoc(doc(db, "favourites", favDoc))
-         
+
          this.song.favourited -= 1;
          const currentDoc = await doc(db, "songs", this.$route.params.song);
          const currentSong = await updateDoc(currentDoc, {

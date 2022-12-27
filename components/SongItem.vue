@@ -4,7 +4,9 @@
          <NuxtLink :to="'/songs/' + song.docID" class="font-bold block text-gray-600 dark:text-gray-50 dark:hover:text-yellow-500">
             {{ song.modified_name }}
          </NuxtLink>
-         <span class="text-gray-500 text-sm dark:text-gray-50">{{ song.display_name }} - </span>
+         <NuxtLink :to="'/profile/' + song.uid" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
+            {{ song.display_name }} - 
+         </NuxtLink>
          <NuxtLink :to="'/album/' + song.album" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
             {{ song.album }}
          </NuxtLink>

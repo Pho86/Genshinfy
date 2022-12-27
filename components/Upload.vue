@@ -84,6 +84,7 @@ export default {
                this.uploads[uploadIndex].variant = 'bg-red-400';
                this.uploads[uploadIndex].icon = 'fas fa-times';
                this.uploads[uploadIndex].text_class = 'text-red-400';
+
             }, async () => {
 
                const auth = this.auth
@@ -94,7 +95,7 @@ export default {
                   modified_name: uploadFile.snapshot.ref.name,
                   genre: '',
                   comment_count: 0,
-                  album: "none"
+                  album: "default"
                };
                song.url = await getDownloadURL(uploadFile.snapshot.ref)
                const db = this.database;

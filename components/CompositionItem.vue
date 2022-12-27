@@ -118,20 +118,22 @@ export default {
          this.alert_message = "Success!";
       },
       async deleteSong() {
-         const db = this.database;
-         const storage = this.storage;
-         const storageRef = ref(storage, `songs/${this.song.original_name}`);
+         const confirmDelete = confirm('Are you sure you want to delete it?');
+         if (confirmDelete) {
+            const db = this.database;
+            const storage = this.storage;
+            const storageRef = ref(storage, `songs/${this.song.original_name}`);
+            await deleteObject(storageRef)
+               .then(() => {
+                  console.log('success')
+               })
+               .catch((error) => {
+                  console.log(error)
+               })
+            await deleteDoc(doc(db, "songs", this.song.docID));
 
-         await deleteObject(storageRef)
-            .then(() => {
-               console.log('success')
-            })
-            .catch((error) => {
-               console.log(error)
-            })
-         await deleteDoc(doc(db, "songs", this.song.docID));
-
-         this.removeSong(this.index);
+            this.removeSong(this.index);
+         }
       }
    }
 }

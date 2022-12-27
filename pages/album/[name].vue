@@ -5,12 +5,13 @@
          <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg header"></div>
          <div class="container mx-auto flex items-center">
             <!-- Play/Pause Button -->
-            <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none"
-               @click.prevent="playPlaylist(songs)">
+            <button type="button"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none hover:text-blue-600"
+               @click.prevent="playPlaylist(song)">
                <i class="fas fa-play"></i>
             </button>
             <button type="button"
-               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8"
+               class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none ml-8 hover:text-blue-600"
                @click.prevent="randomizePlaylist(songs)">
                <i class="fas fa-random"></i>
             </button>
