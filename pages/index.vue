@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full" src="~/assets/img/introduction-music.png" />
+      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full" src="~/assets/img/introduction-music.png" alt="a collection of music players, a cassette, mp3 player, disc, radio, piano, cd, and headphones"/>
     </section>
 
     <!-- Main Content -->

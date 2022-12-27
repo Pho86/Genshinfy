@@ -3,7 +3,6 @@
       <NuxtLoadingIndicator color="#FFCF0D" />
       <transition name="fade" mode="out-in">
          <main>
-
             <section class="mb-8 py-20 text-white text-center relative">
                <div class="absolute inset-0 w-full h-full bg-cover introduction-bg main-banner"></div>
                <div class="container mx-auto">
@@ -20,19 +19,18 @@
                      <p> We are sorry.
                      </p>
                      <img class="justify-self-center" src="https://media.tenor.com/bN43FNYePAcAAAAi/hutao.gif"
-                        alt="this slowpoke moves" width="250" />
+                        alt="hu tao rub" width="250" />
                   </div>
-
                </div>
             </section>
          </main>
-
       </transition>
    </NuxtLayout>
 </template>
    
 <script lang="ts">
 export default {
+   name: "Error",
    layout: 'default',
 }
 </script>

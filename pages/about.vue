@@ -8,7 +8,7 @@
             </div>
          </div>
 
-         <img class="relative block mx-auto mt-5 -mb-10 w-auto max-w-xs" src="~/assets/img/hutao-music.gif" />
+         <img class="relative block mx-auto mt-5 -mb-10 w-auto max-w-xs" src="~/assets/img/hutao-music.gif" alt="hu tao dancing while listening to music and wearing headphones"/>
       </section>
       <section class="container mx-auto">
          <div class="bg-white rounded border border-gray-200 relative flex flex-col ">
