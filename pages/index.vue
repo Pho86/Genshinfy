@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full" src="~/assets/img/introduction-music.png"
+      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full pointer-events-none" src="~/assets/img/introduction-music.png"
         alt="a collection of music players, a cassette, mp3 player, disc, radio, piano, cd, and headphones" />
     </section>
 
@@ -72,7 +72,6 @@ export default {
   },
   async created() {
     await this.getSongs();
-    console.log(this.songs)
     if (process.client) {
       window.addEventListener("scroll", this.handleScroll)
     }

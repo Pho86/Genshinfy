@@ -9,9 +9,10 @@ export default defineStore("player", {
       seek: "00:00",
       duration: "00:00",
       playerProgress: "0%",
-      volume: 1.0,
+      volumeSlider: "100%",
       loop: false,
       randomize: false,
+      muted: false,
    }),
    actions: {
       async newSong(song) {
@@ -24,7 +25,7 @@ export default defineStore("player", {
          this.sound = new Howl({
             src: [song.url],
             html5: true,
-            volume: this.volume || 1.0,
+            // volume: this.volume || 1.0,
             onend: this.checkNextSong
          });
 
@@ -53,6 +54,7 @@ export default defineStore("player", {
       },
 
       async checkNextSong() {
+         console.log(this.loop)
          if (this.loop) {
             this.sound.play()
             return;
@@ -74,10 +76,24 @@ export default defineStore("player", {
          this.duration = helper.formatTime(this.sound.duration());
 
          this.playerProgress = `${(this.sound.seek() / this.sound.duration() * 100)}%`
-         if ((this.sound.seek() / this.sound.duration() * 100) > 98) {
-         }
          if (this.sound.playing()) {
             requestAnimationFrame(this.progress);
+         }
+      },
+      updateVolume(event) {
+         const { x, width } = event.currentTarget.getBoundingClientRect();
+         console.log(event.currentTarget.getBoundingClientRect())
+         const clickX = event.clientX - x;
+         const percentage = clickX / width;
+         
+         console.log(percentage)
+         if(percentage < 0) {
+            this.volumeSlider = "0%"
+            Howler.volume(0);
+            this.muted = true
+         } else {
+            this.volumeSlider =  `${percentage * 100}%`
+            Howler.volume(percentage);
          }
       },
 
@@ -105,7 +121,8 @@ export default defineStore("player", {
          const seconds = (this.sound.duration() * percentage);
 
          this.sound.seek(seconds);
-         this.sound.once("seek", this.progress);
+         this.sound.once("seek", this.progress());
+         
       }
    },
 

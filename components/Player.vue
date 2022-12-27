@@ -27,12 +27,15 @@
          <!-- Duration -->
          <div class="player-duration">{{ duration }}</div>
 
-         <div @click.prevent="updateVol" class="w-1/12 h-2 rounded bg-gray-200 relative cursor-pointer">
-            <!-- Player Ball -->
-            <span class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" :style="{ left: volumeSlider }">
-               <i class="fas fa-circle"></i>
-            </span>
-            <!-- Player Progress Bar-->
+         <!-- <button type="button"> -->
+            <i class="fas fa-volume text-sky-400"></i>
+         <!-- </button> -->
+         <div @click.prevent="updateVolume" class="w-1/12 h-2 rounded bg-gray-200 relative cursor-pointer">
+            <!-- Volume Ball -->
+               <span  class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" :style="{ left: volumeSlider }">
+                  <i class="fas fa-circle"></i>
+               </span>
+            <!-- Volume Bar-->
             <span class="block h-2 rounded bg-gradient-to-r from-blue-500 to-blue-400"
                :style="{ width: volumeSlider }"></span>
          </div>
@@ -53,10 +56,11 @@ export default {
       return {
          looping: false,
          loop_class: "text-gray-400",
+         is_dragover: false,
       }
    },
    methods: {
-      ...mapActions(usePlayerStore, ["toggleAudio", "updateSeek", "toggleLoop", "volumeSlider"]),
+      ...mapActions(usePlayerStore, ["toggleAudio", "updateSeek", "toggleLoop", "updateVolume"]),
       async toggleLoop() {
          this.looping = !this.looping;
          if (this.looping === false) {
@@ -69,7 +73,7 @@ export default {
       }
    },
    computed: {
-      ...mapState(usePlayerStore, ["playing", "duration", "seek", "playerProgress", "current_song", "volume"]),
+      ...mapState(usePlayerStore, ["playing", "duration", "seek", "playerProgress", "current_song", "volumeSlider"]),
       ...mapWritableState(usePlayerStore, ["loop"])
    }
 }
