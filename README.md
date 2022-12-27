@@ -1,9 +1,9 @@
 # Genshinfy
 <p align="center">
-    <img alt="[Hu Tao Listening to music" src="/assets/img/hutao-music.gif">
+    <img alt="Hu Tao Listening to music" src="/assets/img/hutao-music.gif">
 </p>
 
-Genshinfy is a non-commercial music streaming project for personal use. It uses Nuxt 3/Vue, TailwindCSS, TS, Firebase, and Howler. Currently hosted on [Vercel](https://genshinfy.vercel.app/).
+Genshinfy is a non-commercial music streaming project for personal use. It uses Nuxt 3/Vue, TailwindCSS, TS, Firebase, and Howler JS. Currently hosted on [Vercel](https://genshinfy.vercel.app/).
 
 ## To-Do
 
@@ -11,12 +11,12 @@ Genshinfy is a non-commercial music streaming project for personal use. It uses 
 -   [ ] Profile Pages for artists/users
 -   [ ] Music Queue Page to display current queue
 -   [ ] Next/Back buttons to control music queue 
--   [ ] Better micro interactions
+-   [ ] Improve micro interactions
 -   [ ] Music Player Settings
--   [ ] Display what current song is playing by highlighting it on the page
+-   [ ] Display what current song is playing 
 -   [ ] Music thumbnails?
 
-## Nuxt 3 Minimal Starter
+## Nuxt 3
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
@@ -58,3 +58,5 @@ npm run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+will need firebase tokens, read .env.example for examples
