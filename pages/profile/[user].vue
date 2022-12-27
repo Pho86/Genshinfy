@@ -18,7 +18,11 @@
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div v-if="!user" class="text-3xl font-bold">This user does not exist or have any songs uploaded</div>
-               <div v-else class="text-3xl font-bold">Songs uploaded by {{ user.name }}</div>
+               <div v-else>
+                  <p class="text-3xl font-bold">Songs uploaded by {{ user.name }}</p>
+                  <p v-if="user.favourited > 0">Their songs have been favourited {{ user.favourited }} times.</p>
+                  <p v-else>Their songs have not been favourited.</p>
+               </div>
             </div>
          </div>
       </section>

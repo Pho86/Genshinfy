@@ -197,6 +197,15 @@ export default {
          const currentSong = await updateDoc(currentDoc, {
             favourited: this.song.favourited
          })
+
+         const userFav = await doc(db, "users", this.song.uid)
+         const userFavDoc = await getDoc(userFav)
+         let favourited = userFavDoc.data().favourited
+         console.log(favourited)
+         favourited += 1;
+         const userSong = await updateDoc(userFav, {
+            favourited: favourited
+         })
       },
       async removeFavourite() {
          const db = this.database;
@@ -215,7 +224,19 @@ export default {
          const currentDoc = await doc(db, "songs", this.$route.params.song);
          const currentSong = await updateDoc(currentDoc, {
             favourited: this.song.favourited
+         });
+
+         const userFav = await doc(db, "users", this.song.uid)
+         const userFavDoc = await getDoc(userFav)
+         let favourited = userFavDoc.data().favourited
+         console.log(favourited)
+         favourited -= 1;
+         const userSong = await updateDoc(userFav, {
+            favourited: favourited
          })
+
+
+
       },
       async getFavourite() {
 

@@ -21,6 +21,7 @@ export default defineStore("user", {
             email: values.email,
             age: values.age,
             country: values.country,
+            favourited: 0
          });
 
          const userUpdate = await updateProfile(userCred.user, {
