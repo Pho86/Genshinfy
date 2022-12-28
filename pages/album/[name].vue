@@ -103,7 +103,6 @@ export default {
          const albumSnapshots = await getDocs(albumCollection);
          let albumDocIDs = [];
          albumSnapshots.forEach((doc) => {
-            console.log(doc.data())
             albumDocIDs.push(doc.data().docID)
          });
 

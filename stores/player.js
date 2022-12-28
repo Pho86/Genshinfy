@@ -65,6 +65,7 @@ export default defineStore("player", {
          }
          else if (this.next_song.length > 0) {
             this.newSong(this.next_song[0]);
+            this.sendSignal(this.next_song[0])
             this.next_song.shift();
          }
 
@@ -124,10 +125,8 @@ export default defineStore("player", {
          this.sound.once("seek", this.progress());  
       },
       sendSignal(currently_playing) {
-         if(!this.current_song) return;
-         if(currently_playing.original_name === this.current_song.original_name) {
-            return true
-         }
+         console.log(currently_playing)
+         
       }
    },
 
@@ -136,9 +135,8 @@ export default defineStore("player", {
          if (state.sound.playing) {
             return state.sound.playing()
          }
-
          return false;
-      }
+      },
    },
 
    persist: {

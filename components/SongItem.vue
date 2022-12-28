@@ -39,9 +39,6 @@ export default {
       }
    },
    methods:{
-      sendSignal() {
-         console.log('helllo')
-      }
    },
    computed: {
       ...mapState(usePlayerStore, ["current_song"]),
