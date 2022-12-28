@@ -30,7 +30,7 @@
          <!-- <button type="button"> -->
          <i class="fas fa-volume text-sky-400"></i>
          <!-- </button> -->
-         <div @click.prevent="updateVolume" class="w-1/12 h-2 rounded bg-gray-200 relative cursor-pointer">
+         <div @click.prevent="updateVolume" class="w-5/12 h-2 rounded bg-gray-200 relative cursor-pointer md:w-1/12">
             <!-- Volume Ball -->
             <span class="absolute -top-2.5 -ml-2.5 text-gray-800 text-lg" :style="{ left: volumeSlider }">
                <i class="fas fa-circle"></i>

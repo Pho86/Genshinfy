@@ -1,7 +1,7 @@
 <template>
    <li class="flex justify-between items-center p-3 pl-6 cursor-pointer transition duration-300 hover:bg-gray-50 dark:hover:bg-gray-500">
       <div>
-         <NuxtLink :to="'/songs/' + song.docID" class="font-bold block text-gray-600 dark:text-gray-50 dark:hover:text-yellow-500">
+         <NuxtLink :to="'/songs/' + song.docID" class="font-bold block text-gray-600 dark:text-gray-50 dark:hover:text-yellow-500" :class="currentlyPlaying">
             {{ song.modified_name }}
          </NuxtLink>
          <NuxtLink :to="'/profile/' + song.uid" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
@@ -24,12 +24,28 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'pinia';
+import usePlayerStore from "@/stores/player"
 export default {
    name: "SongItem",
+   data() {
+      return {
+         currentlyPlaying: ""
+      }
+   },
    props: {
       song: {
          required: true,
       }
+   },
+   methods:{
+      sendSignal() {
+         console.log('helllo')
+      }
+   },
+   computed: {
+      ...mapState(usePlayerStore, ["current_song"]),
+      ...mapActions(usePlayerStore, ["sendSignal"])
    }
 }
 </script>

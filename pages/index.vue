@@ -6,18 +6,14 @@
       <div class="container mx-auto">
         <div class="text-white main-header-content">
           <h1 class="font-bold text-5xl mb-5">Listen to Genshinfy Music!</h1>
-          <p class="w-full md:w-8/12 mx-auto">
-            Genshinfy is a music streaming platform that allows users to easily listen to music mainly from the game
-            Genshin Impact. It
-            offers a wide selection of songs from the game, making it easy for fans to enjoy their favorite music.
-            <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for battle,
-            Genshinfy has you covered with its extensive collection of music. Whether you're a casual player or a
-            hardcore fan, Genshinfy is a place for you to listen to music. (Any type of music is fine to be uploaded.)
+          <p class="w-11/12 md:w-10/12 mx-auto">
+            Genshinfy is a music streaming platform that allows users to easily listen to music mainly from the game Genshin Impact. It offers a wide selection of songs from the game, making it easy for fans to enjoy their favourite music. <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for battle, Genshinfy has you covered with its extensive collection of music. Whether you're a casual player or a hardcore fan, Genshinfy is a place for you to listen to music. (Any type or genre of music is fine to be uploaded.)
           </p>
         </div>
       </div>
 
-      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full pointer-events-none" src="~/assets/img/introduction-music.png"
+      <img class="relative block mx-auto mt-5 -mb-20 w-auto max-w-full pointer-events-none"
+        src="~/assets/img/introduction-music.png"
         alt="a collection of music players, a cassette, mp3 player, disc, radio, piano, cd, and headphones" />
     </section>
 
@@ -28,9 +24,9 @@
           v-icon.right="'headphones-alt'">
           <span class="card-title dark:text-gray-100">Recommended Songs</span>
         </div>
-
       </div>
     </section> -->
+
     <!-- Main Content -->
     <section class="container mx-auto">
       <div

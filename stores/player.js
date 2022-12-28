@@ -121,8 +121,13 @@ export default defineStore("player", {
          const seconds = (this.sound.duration() * percentage);
 
          this.sound.seek(seconds);
-         this.sound.once("seek", this.progress());
-         
+         this.sound.once("seek", this.progress());  
+      },
+      sendSignal(currently_playing) {
+         if(!this.current_song) return;
+         if(currently_playing.original_name === this.current_song.original_name) {
+            return true
+         }
       }
    },
 
