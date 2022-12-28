@@ -32,10 +32,12 @@
                <div class="text-3xl font-bold">{{ song.modified_name }}</div>
                <div>
                   <NuxtLink :to="'/profile/' + song.uid">
-                     {{ song.display_name }} -
+                     {{ song.display_name }}
                   </NuxtLink>
-                  <NuxtLink :to="'/album/' + song.album">{{ song.album }} - </NuxtLink>
+                  <span class="text-gray-500 text-sm no-active-link dark:text-gray-50"> - </span>
+                  <NuxtLink :to="'/album/' + song.album">{{ song.album }} </NuxtLink>
                   <template v-if="song.genre">
+                     <span class="text-gray-500 text-sm no-active-link dark:text-gray-50"> - </span>
                      <NuxtLink :to="'/genre/' + song.genre">
                         {{ song.genre }}
                      </NuxtLink>

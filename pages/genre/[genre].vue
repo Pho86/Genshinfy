@@ -17,8 +17,8 @@
             </button>
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
-               <div class="text-3xl font-bold">Songs in {{ $route.params.genre }}</div>
-               <div></div>
+               <div class="text-3xl font-bold">{{ $route.params.genre }}</div>
+               <div>Genre</div>
             </div>
          </div>
       </section>

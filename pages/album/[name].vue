@@ -18,7 +18,7 @@
             <div class="z-50 text-left ml-8">
                <!-- Song Info -->
                <div class="text-3xl font-bold">{{ $route.params.name }}</div>
-               <div></div>
+               <div>Album</div>
             </div>
          </div>
       </section>
