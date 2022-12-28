@@ -33,7 +33,13 @@
                <div>
                   <NuxtLink :to="'/profile/' + song.uid">
                      {{ song.display_name }} -
-                  </NuxtLink>{{ song.genre }} - <NuxtLink :to="'/album/' + song.album">{{ song.album }}</NuxtLink>
+                  </NuxtLink>
+                  <NuxtLink :to="'/album/' + song.album">{{ song.album }} - </NuxtLink>
+                  <template v-if="song.genre">
+                     <NuxtLink :to="'/genre/' + song.genre">
+                        {{ song.genre }}
+                     </NuxtLink>
+                  </template>
                </div>
                <div v-if="song.favourited == 1">{{ song.favourited }} person has favourited this song.</div>
                <div v-else-if="song.favourited > 1">{{ song.favourited }} people have favourited this song.</div>

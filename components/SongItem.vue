@@ -5,11 +5,18 @@
             {{ song.modified_name }}
          </NuxtLink>
          <NuxtLink :to="'/profile/' + song.uid" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
-            {{ song.display_name }} - 
+            {{ song.display_name }} 
          </NuxtLink>
+         <span class="text-gray-500 text-sm no-active-link dark:text-gray-50"> - </span> 
          <NuxtLink :to="'/album/' + song.album" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
             {{ song.album }}
          </NuxtLink>
+         <template v-if="song.genre">
+            <span class="text-gray-500 text-sm no-active-link dark:text-gray-50"> - </span> 
+            <NuxtLink :to="'/genre/' + song.genre" class="text-gray-500 text-sm no-active-link dark:text-gray-50 dark:hover:text-yellow-500" >
+               {{ song.genre }}
+            </NuxtLink>
+         </template>
       </div>
 
       <div class="text-gray-600 text-lg dark:text-gray-50">
