@@ -7,12 +7,12 @@ export default defineNuxtConfig({
          meta: [
             { name: 'description', content: 'Genshinfy is a platform that allows users to easily listen to music mainly from the game Genshin Impact. It offers a wide selection of songs from the game, making it easy for fans to enjoy their favorite music.' }
          ],
-         link: [
-            {
-               rel: 'icon',
-               type: 'image/x-icon', href: '/public/favicon.ico'
-            }
-         ]
+         // link: [
+         //    {
+         //       rel: 'icon',
+         //       type: 'image/x-icon', href: '/public/favicon.ico'
+         //    }
+         // ]
       },
       pageTransition: { name: 'fade', mode: 'out-in' },
    },
