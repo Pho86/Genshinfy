@@ -55,7 +55,7 @@ export default {
    data() {
       return {
          songs: [],
-         maxPerPage: 10,
+         maxPerPage: 100,
          pendingRequest: false,
          database: firebaseDB(),
          auth: firebaseAuth(),
@@ -87,7 +87,7 @@ export default {
          const bottomOfWindow = Math.round(scrollTop) + innerHeight === offsetHeight;
 
          if (bottomOfWindow) {
-            this.getSongs();
+            // this.getSongs();
          }
       },
       async getSongs() {
