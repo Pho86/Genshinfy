@@ -92,7 +92,7 @@ export default {
                   uid: auth.currentUser.uid,
                   display_name: auth.currentUser.displayName,
                   original_name: uploadFile.snapshot.ref.name,
-                  modified_name: uploadFile.snapshot.ref.name,
+                  modified_name: (uploadFile.snapshot.ref.name).slice(0, -4),
                   genre: '',
                   comment_count: 0,
                   album: "default"
