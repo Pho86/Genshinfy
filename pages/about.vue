@@ -12,7 +12,7 @@
       </section>
       <section class="container mx-auto">
          <div class="bg-white rounded border border-gray-200 relative flex flex-col ">
-            <div class="px-6 pt-6 pb-6 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+            <div class="px-6 pt-6 pb-6 border-b border-gray-200 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50 transition duration-500">
                <p>Genshinfy is a music streaming site, created as a <span class="font-bold">non-commercial
                      personal project</span> to practice using NuxtJS/Vue/Firebase. If you want something taken down or
                   if you have any questions, please contact me at <NuxtLink to="mailto:phoph@duck.com" target="_blank"
@@ -41,7 +41,7 @@ export default {
 <style scoped>
 
 .main-banner {
-   background-image: url('~/assets/img/user-header.png');
+   background-image: url('~/assets/img/about-header.png');
    z-index: -1;
 }
 </style>

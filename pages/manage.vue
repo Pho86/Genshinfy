@@ -1,11 +1,11 @@
 <template>
    <main>
       <section class="container mx-auto mt-6">
-         <div class="md:grid md:grid-cols-3 md:gap-4">
+         <div class="md:grid md:grid-cols-3 md:gap-4 transition duration-500">
             <app-upload :addSong="addSongInfo" />
-            <div class="col-span-2">
+            <div class="col-span-2 ">
                <div
-                  class="bg-white rounded border border-gray-200 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+                  class="bg-white rounded border border-gray-200 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50 transition duration-500">
                   <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 dark:border-gray-500">
                      <span class="card-title">My Songs</span>
                      <i class="fa fa-compact-disc float-right text-sky-400 text-2xl"></i>

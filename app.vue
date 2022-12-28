@@ -50,6 +50,7 @@ export default {
 
 body {
   font-family: 'Merriweather Sans', sans-serif;
+  transition: all 500ms;
 }
 
 .main-banner {

@@ -30,7 +30,7 @@
     <!-- Main Content -->
     <section class="container mx-auto">
       <div
-        class="bg-white rounded border border-gray-200 bg-white-500 relative flex flex-col dark:bg-gray-700 dark:border-gray-500">
+        class="bg-white rounded border border-gray-200 bg-white-500 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 transition duration-500">
         <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200 dark:border-gray-500"
           v-icon.right="'headphones-alt'">
           <span class="card-title dark:text-gray-100">Songs</span>
@@ -120,7 +120,6 @@ export default {
 </script>
 
 <script setup>
-
 const { vIcon } = useVIcon()
 
 </script>

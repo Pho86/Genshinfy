@@ -4,7 +4,7 @@
          <div class="absolute inset-0 w-full h-full bg-cover introduction-bg main-banner"></div>
          <div class="container mx-auto">
             <div class="text-white main-header-content">
-               <h1 class="font-bold text-5xl mb-5">Get Random Anime Quotes.</h1>
+               <h1 class="font-bold text-5xl mb-5">Get Random Anime Quotes</h1>
             </div>
          </div>
 
@@ -13,7 +13,7 @@
       </section>
       <section class="container mx-auto">
          <div
-            class="bg-white rounded border border-gray-200 relative flex flex-col text-center dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+            class="bg-white rounded border border-gray-200 relative flex flex-col text-center dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50 transition duration-500">
             <div class="px-6 pt-6 pb-6 content-center">
                <template v-if="loading">
                   <div>
@@ -94,7 +94,7 @@ export default {
 
 <style scoped>
 .main-banner {
-   background-image: url('~/assets/img/user-header.png');
+   background-image: url('~/assets/img/about-header.png');
    z-index: -1;
 }
 </style>

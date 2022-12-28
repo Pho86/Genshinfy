@@ -1,6 +1,6 @@
 <template>
    <!-- Player -->
-   <div class="fixed bottom-0 left-0 bg-white px-8 py-3 w-screen dark:bg-slate-600 dark:text-gray-50">
+   <div class="fixed bottom-0 left-0 bg-white px-8 py-3 w-screen dark:bg-slate-600 dark:text-gray-50 transition duration-500">
       <!-- Track Info -->
       <div class="text-center" v-if="current_song.modified_name">
          <span class="song-title font-bold">{{ current_song.modified_name }}</span> by

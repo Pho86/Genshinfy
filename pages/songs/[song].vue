@@ -44,7 +44,7 @@
       <!-- Form -->
       <section class="container mx-auto mt-6" id="comments">
          <div
-            class="bg-white rounded border border-gray-200 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50">
+            class="bg-white rounded border border-gray-200 relative flex flex-col dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50 transition duration-500">
             <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
                <!-- Comment Count -->
                <span class="card-title">Comments {{ song.comment_count }}</span>
@@ -76,7 +76,7 @@
       </section>
       <!-- Comments -->
       <ul class="container mx-auto">
-         <li class="p-6 bg-gray-50 border border-gray-200 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50"
+         <li class="p-6 bg-gray-50 border border-gray-200 dark:bg-gray-700 dark:border-gray-500 dark:text-gray-50 transition duration-500"
             v-for="comment in sortedComments" :key="comment.docID">
             <!-- Comment Author -->
             <div class="mb-5">
