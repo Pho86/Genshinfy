@@ -97,6 +97,7 @@ export default {
                   comment_count: 0,
                   album: "default",
                   favourited: 0,
+                  upload_date: new Date().getTime()
                };
                song.url = await getDownloadURL(uploadFile.snapshot.ref)
                const db = this.database;

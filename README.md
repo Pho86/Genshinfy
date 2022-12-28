@@ -8,6 +8,7 @@ Genshinfy is a non-commercial music streaming project for personal use. It uses 
 ## To-Do
 
 -   [ ] Allow users to create playlists and share links to other users
+-   [ ] Search functionality
 -   [ ] Profile Pages for artists/users
 -   [ ] Music Queue Page to display current queue
 -   [ ] Next/Back buttons to control music queue 

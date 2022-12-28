@@ -28,7 +28,7 @@ import useUserStore from '@/stores/user';
 import AppUpload from "@/components/Upload.vue";
 import CompositionItem from "@/components/CompositionItem.vue";
 
-import { where, getDocs, query, collection } from '@firebase/firestore';
+import { where, getDocs, query, collection, orderBy } from '@firebase/firestore';
 import { firebaseDB, firebaseAuth, firebaseStorage } from "@/composables/firebase";
 
 export default {
@@ -59,7 +59,7 @@ export default {
       const auth = this.auth;
       const db = this.database;
       if (this.auth.currentUser) {
-         const songCollection = await query(collection(db, "songs"), where("uid", "==", auth.currentUser.uid));
+         const songCollection = await query(collection(db, "songs"), where("uid", "==", auth.currentUser.uid), orderBy("upload_date", "desc"));
          const querySnapshot = await getDocs(songCollection);
          querySnapshot.forEach(this.addSong);
       } else {
