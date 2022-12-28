@@ -95,7 +95,8 @@ export default {
                   modified_name: (uploadFile.snapshot.ref.name).slice(0, -4),
                   genre: '',
                   comment_count: 0,
-                  album: "default"
+                  album: "default",
+                  favourited: 0,
                };
                song.url = await getDownloadURL(uploadFile.snapshot.ref)
                const db = this.database;
