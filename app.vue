@@ -1,9 +1,9 @@
 <template>
   <NuxtLayout>
     <NuxtLoadingIndicator color="#FFCF0D" />
-    <transition name="fade" mode="out-in">
+    <!-- <transition name="fade" mode="out-in" appear> -->
       <NuxtPage></NuxtPage>
-    </transition>
+    <!-- </transition> -->
   </NuxtLayout>
 
 </template>
@@ -43,11 +43,6 @@ export default {
   }
 }
 </script>
-
-<script setup lang="ts">
-
-</script>
-
 
 <style>
 @import 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css';
