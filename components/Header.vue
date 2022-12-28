@@ -88,7 +88,7 @@ export default {
   name: "Header",
   data() {
     return {
-      dark: false,
+      dark: true,
     }
   },
   mounted() {

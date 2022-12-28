@@ -1,6 +1,6 @@
 export default defineStore("darkmode", {
   state: () => ({
-    darkMode: false,
+    darkMode: true,
   }),
   persist: {
     storage: persistedState.localStorage,
