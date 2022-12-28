@@ -8,7 +8,8 @@
             </div>
          </div>
 
-         <img class="relative block mx-auto mt-5 -mb-10 w-auto" src="~/assets/img/hutao-wave.gif" alt="hu tao waving her hands repeatedly"/>
+         <img class="relative block mx-auto mt-5 -mb-10 w-auto" src="~/assets/img/hutao-wave.gif"
+            alt="hu tao waving her hands repeatedly" />
       </section>
       <section class="container mx-auto">
          <div
@@ -46,6 +47,7 @@
             </div>
          </div>
       </section>
+
    </main>
 </template>
 

@@ -1,7 +1,8 @@
 <template>
     <Header />
     <slot></slot>
-    <Player/>
+    <Player />
+    <Auth />
 </template>
  
 
@@ -9,7 +10,7 @@
 <script>
 
 export default {
-    
+    name: "Default_Layout"
 }
 </script>
 

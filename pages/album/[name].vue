@@ -38,8 +38,6 @@
             <!-- .. end Playlist -->
          </div>
       </section>
-
-      <Auth />
    </main>
 </template>
  

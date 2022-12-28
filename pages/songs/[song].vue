@@ -2,7 +2,7 @@
    <main>
       <!-- Music Header -->
       <section class="w-full mb-8 py-14 text-center text-white relative">
-         <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg header"></div>
+         <div class="absolute inset-0 w-full h-full box-border bg-contain music-bg header z-0"></div>
          <div class="container mx-auto flex items-center">
             <!-- Play/Pause Button -->
             <button type="button"
@@ -90,6 +90,7 @@
             </p>
          </li>
       </ul>
+
    </main>
 </template>
 

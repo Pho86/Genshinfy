@@ -1,6 +1,6 @@
 <template>
    <!-- Auth Modal -->
-   <div class="fixed z-10 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
+   <div class="fixed z-50 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
          <div class="fixed inset-0 transition-opacity">
             <div class="absolute inset-0 bg-gray-800 opacity-75" @click.prevent="modalVisibility = false"></div>
@@ -32,10 +32,10 @@
                   </li>
                </ul>
 
-               <app-login-form v-if="tab=='login'"/>
+               <app-login-form v-if="tab == 'login'" />
 
-               <app-register-form v-else/>
-               
+               <app-register-form v-else />
+
             </div>
          </div>
       </div>
@@ -56,7 +56,7 @@ export default {
          tab: "login",
       }
    },
-   components:{
+   components: {
       AppLoginForm,
       AppRegisterForm,
    },
