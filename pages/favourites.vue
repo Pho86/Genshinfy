@@ -7,7 +7,7 @@
             <!-- Play/Pause Button -->
             <button type="button"
                class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full focus:outline-none hover:text-blue-600"
-               @click.prevent="playPlaylist(song)">
+               @click.prevent="playPlaylist(songs)">
                <i class="fas fa-play"></i>
             </button>
             <button type="button"
