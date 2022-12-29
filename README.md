@@ -3,7 +3,7 @@
     <img alt="Hu Tao Listening to music" src="/assets/img/hutao-music.gif">
 </p>
 
-Genshinfy is a non-commercial music streaming project for personal use. It uses Nuxt 3/Vue, TailwindCSS, TS, Firebase, and Howler JS. Currently hosted on [Vercel](https://genshinfy.vercel.app/).
+Genshinfy is a non-commercial music streaming project for personal use. Uses Nuxt 3, TailwindCSS, TS, Firebase, and Howler JS. Currently hosted on [Vercel](https://genshinfy.vercel.app/).
 
 ## To-Do
 
