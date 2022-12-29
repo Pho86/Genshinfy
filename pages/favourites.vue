@@ -59,7 +59,6 @@ export default {
    data() {
       return {
          songs: [],
-         maxPerPage: 10,
          pendingRequest: false,
          database: firebaseDB(),
          auth: firebaseAuth(),
@@ -124,7 +123,7 @@ export default {
             const lastDocRef = doc(db, "songs", (this.songs[this.songs.length - 1].docID))
             const lastDoc = await getDoc(lastDocRef)
             for (let i = 0; i < favDocIDs.length; i++) {
-               songCollection = query(collection(db, "songs"), limit(this.maxPerPage), where("docID", "==", favDocIDs[i]), orderBy('modified_name'), startAfter(lastDoc));
+               songCollection = query(collection(db, "songs"), where("docID", "==", favDocIDs[i]), orderBy('modified_name'), startAfter(lastDoc));
                querySnapshot = await getDocs(songCollection);
                querySnapshot.forEach((doc) => {
                   this.songs.push({

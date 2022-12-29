@@ -60,7 +60,7 @@ export default {
    data() {
       return {
          songs: [],
-         maxPerPage: 100,
+         maxPerPage: 25,
          pendingRequest: false,
          database: firebaseDB(),
          auth: firebaseAuth(),
