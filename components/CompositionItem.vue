@@ -82,7 +82,8 @@ export default {
          showForm: false,
          schema: {
             modified_name: 'required',
-            genre: 'alpha_spaces'
+            genre: 'alpha_spaces',
+            album: 'required'
          },
          in_submission: false,
          show_alert: false,
