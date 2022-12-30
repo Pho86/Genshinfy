@@ -53,11 +53,6 @@ body {
   transition: all 500ms;
 }
 
-.main-banner {
-  background-image: url('~/assets/img/header.png');
-  z-index: -1;
-}
-
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.5s;

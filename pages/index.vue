@@ -9,10 +9,10 @@
           <p class="w-11/12 md:w-10/12 mx-auto">
             Genshinfy is a music streaming platform that allows users to easily listen to music. It offers a wide
             selection of songs from the game, making it easy for fans to enjoy their
-            favourite music. <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for
+            favourite music. (Any type or genre of music is fine to be
+            uploaded.) <br><br> Whether you want to relax and listen to the game's soundtrack or get pumped up for
             battle, Genshinfy has you covered with its extensive collection of music. Whether you're a casual player or
-            a hardcore fan, Genshinfy is a place for you to listen to music. (Any type or genre of music is fine to be
-            uploaded.)
+            a hardcore fan, Genshinfy is a place for you to listen to music. 
           </p>
         </div>
       </div>
@@ -155,6 +155,10 @@ export default {
 const { vIcon } = useVIcon()
 
 </script>
-<style>
+<style scoped>
+.main-banner {
+  background-image: url('~/assets/img/header.png');
+  z-index: -1;
+}
 
 </style>
