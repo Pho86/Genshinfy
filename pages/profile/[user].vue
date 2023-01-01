@@ -36,8 +36,13 @@
                <span class="card-title dark:text-gray-100">Songs</span>
             </div>
             <!-- Playlist -->
-            <ol id="playlist">
+            <ol id="playlist" v-if="songs.length > 0">
                <app-song-item v-for="song in songs" :key="song.docID" :song="song" />
+            </ol>
+            <ol v-else>
+               <li class="flex justify-between items-center p-3 pl-6 transition duration-300">
+                  <p class="text-gray-500 text-sm dark:text-gray-50">They have yet to upload any songs.</p>
+               </li>
             </ol>
             <!-- .. end Playlist -->
          </div>

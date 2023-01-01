@@ -4,7 +4,7 @@
       <transition name="fade" mode="out-in">
          <main>
             <section class="mb-8 py-20 text-white text-center relative ">
-               <div class="absolute inset-0 w-full h-full bg-cover introduction-bg main-banner transition duration-500">
+               <div class="absolute inset-0 w-full h-full bg-cover introduction-bg banner transition duration-500">
                </div>
                <div class="container mx-auto">
                   <div class="text-white main-header-content">
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.main-banner {
+.banner {
    background-image: url('~/assets/img/header.png');
    z-index: -1;
 }

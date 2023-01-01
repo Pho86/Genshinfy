@@ -7,14 +7,14 @@ Genshinfy is a non-commercial music streaming project for personal use. Uses Nux
 
 ## To-Do
 
+-   [ ] Improve micro interactions
 -   [ ] Allow users to create playlists and share links to other users
 -   [ ] Search functionality
+-   [ ] Music Player Settings (fade-in/out, better loop control, speed)
 -   [ ] Profile Pages for artists/users
--   [ ] Music Queue Page to display current queue
 -   [ ] Next/Back buttons to control music queue 
--   [ ] Improve micro interactions
--   [ ] Music Player Settings
--   [ ] Display what current song is playing 
+-   [ ] Music Queue Page to display current queue
+-   [ ] Display what current song is playing by highlighting current song
 -   [ ] Music thumbnails?
 
 ## Nuxt 3
